@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { BookOpen, CheckCircle } from 'lucide-react';
-import { Section, Progress } from '../types/index';
+import { Section, Progress } from '../types/inedx';
 import { APP_CONSTANTS } from '../constants/index';
 
 interface TableOfContentsProps {

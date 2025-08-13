@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
-import { Section } from '../types/index';
+import { Section } from '../types/inedx';
 import { formatContent } from '../utils/contentFormatter';
 import { APP_CONSTANTS } from '../constants/index';
 import QuizComponent from './QuizComponent';

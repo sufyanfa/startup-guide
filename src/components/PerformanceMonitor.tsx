@@ -5,13 +5,25 @@ import { useEffect } from 'react';
 export const PerformanceMonitor = () => {
   useEffect(() => {
     // Monitor Core Web Vitals
-    if (typeof window !== 'undefined' && 'web-vitals' in window) {
-      import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-        getCLS(console.log);
-        getFID(console.log);
-        getFCP(console.log);
-        getLCP(console.log);
-        getTTFB(console.log);
+    if (typeof window !== 'undefined') {
+      import('web-vitals').then((webVitals) => {
+        if ('onCLS' in webVitals && typeof webVitals.onCLS === 'function') {
+          webVitals.onCLS(console.log);
+        }
+        if ('onFID' in webVitals && typeof webVitals.onFID === 'function') {
+          webVitals.onFID(console.log);
+        }
+        if ('onFCP' in webVitals && typeof webVitals.onFCP === 'function') {
+          webVitals.onFCP(console.log);
+        }
+        if ('onLCP' in webVitals && typeof webVitals.onLCP === 'function') {
+          webVitals.onLCP(console.log);
+        }
+        if ('onTTFB' in webVitals && typeof webVitals.onTTFB === 'function') {
+          webVitals.onTTFB(console.log);
+        }
+      }).catch(() => {
+        // Silently fail if web-vitals is not available
       });
     }
 
@@ -52,8 +64,8 @@ export const PerformanceMonitor = () => {
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js')
-            .then(registration => console.log('SW registered'))
-            .catch(error => console.log('SW registration failed'));
+            .then(() => console.log('SW registered'))
+            .catch(() => console.log('SW registration failed'));
         });
       }
     };

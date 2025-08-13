@@ -1,6 +1,6 @@
 interface StructuredDataProps {
   type: 'Course' | 'Article' | 'Book' | 'EducationalOrganization';
-  data: any;
+  data: Record<string, unknown>;
 }
 
 export const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {

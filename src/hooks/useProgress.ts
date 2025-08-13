@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Progress as ProgressType } from '../types/index';
+import { Progress as ProgressType } from '../types/inedx';
 
 const PROGRESS_STORAGE_KEY = 'ebook_progress';
 
