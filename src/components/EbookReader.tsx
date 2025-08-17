@@ -63,7 +63,7 @@ const EbookReader: React.FC = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4" dir="rtl" role="main">
+    <main className="min-h-screen bg-background p-4" dir="rtl" role="main">
       <div className="max-w-4xl mx-auto">
         <AppHeader
           progressPercentage={progressPercentage}

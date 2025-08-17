@@ -3,6 +3,7 @@ import { Rubik, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { StartupGuideSchema } from "@/components/StructuredData";
 import { PerformanceMonitor } from "@/components/PerformanceMonitor";
+import { ThemeProvider } from "next-themes";
 
 const rubik = Rubik({
   variable: "--font-rubik",
@@ -52,9 +53,11 @@ export default function RootLayout({
       <body
         className={`${rubik.variable} ${geistMono.variable} antialiased font-sans`}
       >
-        <StartupGuideSchema />
-        <PerformanceMonitor />
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <StartupGuideSchema />
+          <PerformanceMonitor />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

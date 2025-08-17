@@ -2,6 +2,7 @@ import React from 'react';
 import { Progress } from './ui/progress';
 import { BookOpen } from 'lucide-react';
 import { APP_CONSTANTS } from '../constants/index';
+import { ThemeToggle } from './ThemeToggle';
 
 interface AppHeaderProps {
   progressPercentage: number;
@@ -16,11 +17,14 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
 }) => {
   return (
     <header className="text-center mb-8" role="banner">
-      <div className="flex items-center justify-center gap-3 mb-4">
-        <BookOpen className="h-8 w-8 text-blue-600" aria-hidden="true" />
-        <h1 className="text-3xl font-bold text-gray-800">
-          {APP_CONSTANTS.TITLE}
-        </h1>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <BookOpen className="h-8 w-8 text-blue-600" aria-hidden="true" />
+          <h1 className="text-3xl font-bold text-gray-800">
+            {APP_CONSTANTS.TITLE}
+          </h1>
+        </div>
+        <ThemeToggle />
       </div>
       <div aria-label="تقدم القراءة">
         <Progress 

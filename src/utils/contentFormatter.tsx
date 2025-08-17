@@ -6,21 +6,21 @@ export const formatContent = (content: string) => {
     // Handle headers
     if (line.startsWith('###')) {
       return (
-        <h3 key={index} className="text-lg font-semibold mt-6 mb-3 text-gray-800">
+        <h3 key={index} className="text-lg font-semibold mt-6 mb-3 text-gray-800 dark:text-gray-200">
           {line.replace('###', '').trim()}
         </h3>
       );
     }
     if (line.startsWith('##')) {
       return (
-        <h2 key={index} className="text-xl font-semibold mt-8 mb-4 text-gray-800">
+        <h2 key={index} className="text-xl font-semibold mt-8 mb-4 text-gray-800 dark:text-gray-200">
           {line.replace('##', '').trim()}
         </h2>
       );
     }
     if (line.startsWith('#')) {
       return (
-        <h1 key={index} className="text-2xl font-bold mt-8 mb-6 text-gray-900">
+        <h1 key={index} className="text-2xl font-bold mt-8 mb-6 text-gray-900 dark:text-gray-100">
           {line.replace('#', '').trim()}
         </h1>
       );
@@ -29,7 +29,7 @@ export const formatContent = (content: string) => {
     // Handle bold text
     if (line.startsWith('**') && line.endsWith('**')) {
       return (
-        <p key={index} className="font-semibold my-4 text-gray-800">
+        <p key={index} className="font-semibold my-4 text-gray-800 dark:text-gray-200">
           {line.replace(/\*\*/g, '')}
         </p>
       );
@@ -38,7 +38,7 @@ export const formatContent = (content: string) => {
     // Handle lists
     if (line.startsWith('*') || line.startsWith('-')) {
       return (
-        <li key={index} className="mr-6 mb-2 text-gray-700 list-disc">
+        <li key={index} className="mr-6 mb-2 text-gray-700 list-disc dark:text-gray-300">
           {line.replace(/^[*-]\s*/, '')}
         </li>
       );
@@ -55,7 +55,7 @@ export const formatContent = (content: string) => {
       return parts.map((part, partIndex) => {
         if (part.startsWith('**') && part.endsWith('**')) {
           return (
-            <strong key={partIndex} className="font-semibold text-gray-900">
+            <strong key={partIndex} className="font-semibold text-gray-900 dark:text-gray-100">
               {part.replace(/\*\*/g, '')}
             </strong>
           );
@@ -66,7 +66,7 @@ export const formatContent = (content: string) => {
 
     // Regular paragraphs
     return (
-      <p key={index} className="mb-4 leading-relaxed text-gray-700">
+      <p key={index} className="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">
         {processInlineFormatting(line)}
       </p>
     );

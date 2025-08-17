@@ -34,15 +34,15 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
               onClick={() => onSectionSelect(index)}
               className={`text-right p-3 rounded-lg border transition-colors ${
                 index === currentSectionIndex
-                  ? 'bg-blue-100 border-blue-300 text-blue-800'
-                  : 'bg-white border-gray-200 hover:bg-gray-50'
+                  ? 'border-primary text-primary dark:bg-primary/5'
+                  : 'border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800'
               }`}
             >
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">{section.title}</span>
                 <div className="flex items-center gap-2">
                   {progress.completedSections.has(section.id) && (
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                    <CheckCircle className="h-4 w-4 text-primary" />
                   )}
                   {progress.quizScores[section.id] !== undefined && (
                     <Badge variant="secondary" className="text-xs">
