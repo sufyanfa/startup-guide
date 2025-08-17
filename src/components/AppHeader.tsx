@@ -19,8 +19,8 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
     <header className="text-center mb-8" role="banner">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <BookOpen className="h-8 w-8 text-blue-600" aria-hidden="true" />
-          <h1 className="text-3xl font-bold text-gray-800">
+          <BookOpen className="h-8 w-8 text-primary" aria-hidden="true" />
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200">
             {APP_CONSTANTS.TITLE}
           </h1>
         </div>
@@ -34,7 +34,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
           aria-valuemin={0}
           aria-valuemax={100}
         />
-        <p className="text-sm text-gray-600 mt-2">
+        <p className="text-sm text-gray-600 mt-2 dark:text-gray-400">
           {APP_CONSTANTS.COMPLETED_PROGRESS} {completedSections} {APP_CONSTANTS.OF} {totalSections} {APP_CONSTANTS.CHAPTERS}
         </p>
       </div>
