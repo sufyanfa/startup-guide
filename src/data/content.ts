@@ -90,7 +90,7 @@ export const sections: Section[] = [
             'المنافسة الشديدة'
           ],
           correctAnswer: 1,
-          explanation: 'السبب الأول الذي قد يقتل مشروعك هو عدم وجود سوق له.'
+          explanation: 'وهذا السبب الأول الذي قد يقتل مشروعك هو عدم وجود سوق له.'
         },
         {
           id: 'idea_2',

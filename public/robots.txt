@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: /sitemap.xml
+Sitemap: https://startup.sufyanfa.com/sitemap.xml
