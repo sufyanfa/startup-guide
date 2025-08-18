@@ -4,6 +4,7 @@ import "./globals.css";
 import { StartupGuideSchema } from "@/components/StructuredData";
 import { PerformanceMonitor } from "@/components/PerformanceMonitor";
 import { ThemeProvider } from "next-themes";
+import { Analytics } from '@vercel/analytics/next';
 
 const rubik = Rubik({
   variable: "--font-rubik",
@@ -57,6 +58,7 @@ export default function RootLayout({
           <StartupGuideSchema />
           <PerformanceMonitor />
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
