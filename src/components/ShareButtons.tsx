@@ -56,7 +56,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ title, url }) => {
           <Linkedin className="h-4 w-4" />
           LinkedIn
         </Button>
-        {navigator.share && (
+        {typeof window !== 'undefined' && 'share' in navigator && (
           <Button onClick={shareNative} variant="outline" size="sm" className="flex items-center gap-2">
             <Share2 className="h-4 w-4" />
             مشاركة
