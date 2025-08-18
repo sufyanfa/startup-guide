@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://startup-guide.vercel.app'),
+  metadataBase: new URL('https://startup.sufyanfa.com'),
   title: "دليل الشركات الناشئة | كيفية بناء شركة ناشئة ناجحة",
   description: "دليلك المبسّط والعملي لبناء شركة ناشئة ناجحة من الفكرة إلى التنفيذ. تعلم أساسيات ريادة الأعمال، تطوير المنتجات، بناء الفرق والحصول على التمويل.",
   keywords: "شركة ناشئة، ريادة أعمال، تطوير منتج، تمويل، فريق عمل، نمو شركة، أعمال",
