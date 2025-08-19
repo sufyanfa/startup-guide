@@ -31,12 +31,14 @@ export const Navigation: React.FC<NavigationProps> = ({
     if (isLastPage) {
       setShowFeedbackModal(true);
     } else {
-      onComplete();
+      onNext();
+      setTimeout(() => {
+        onComplete();
+      }, 50);
     }
   };
 
   const handleFeedbackSubmit = () => {
-    // Mark the section as complete after feedback submission
     onComplete();
   };
   
@@ -54,27 +56,20 @@ export const Navigation: React.FC<NavigationProps> = ({
         </Button>
 
         <div className="flex items-center gap-2">
-          {!isCompleted && !showQuiz && (
+          {!showQuiz && (
             <Button
               onClick={handleMarkAsRead}
-              variant="outline"
               className="flex items-center gap-2"
             >
-              <CheckCircle className="h-4 w-4" />
-              {APP_CONSTANTS.COMPLETED_READ}
+              {isLastPage ? APP_CONSTANTS.EVALUATE : APP_CONSTANTS.NEXT_CHAPTER}
+              {isLastPage ? (
+                <CheckCircle className="h-4 w-4" />
+              ) : (
+                <ChevronRight className="h-4 w-4" />
+              )}
             </Button>
           )}
         </div>
-
-        {!isLastPage && (
-          <Button
-            onClick={onNext}
-            className="flex items-center gap-2"
-          >
-            {APP_CONSTANTS.NEXT_CHAPTER}
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-        )}
       </div>
       
       {isLastPage && (

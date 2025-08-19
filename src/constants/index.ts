@@ -25,6 +25,7 @@ export const APP_CONSTANTS = {
   NEXT_CHAPTER: 'الفصل التالي',
   COMPLETED_READ: 'تم القراءة',
   COMPLETED_PROGRESS: 'تم إكمال',
+  EVALUATE: 'تقييم',
   OF: 'من',
   CHAPTERS: 'فصول',
   CHAPTER: 'الفصل'
