@@ -28,8 +28,14 @@ export const Navigation: React.FC<NavigationProps> = ({
 
   const handleMarkAsRead = () => {
     if (isLastPage) {
+      if (typeof window !== 'undefined' && window.umami) {
+        window.umami.track('EVALUATE');
+      }
       setShowFeedbackModal(true);
     } else {
+      if (typeof window !== 'undefined' && window.umami) {
+        window.umami.track('NEXT_CHAPTER');
+      }
       onNext();
       setTimeout(() => {
         onComplete();

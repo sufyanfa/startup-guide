@@ -13,16 +13,25 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ title, url }) => {
   const shareText = `${title} - دليل الشركات الناشئة`;
   
   const shareToTwitter = () => {
+    if (typeof window !== 'undefined' && window.umami) {
+      window.umami.track('share-twitter');
+    }
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(url)}`;
     window.open(twitterUrl, '_blank');
   };
 
   const shareToWhatsApp = () => {
+    if (typeof window !== 'undefined' && window.umami) {
+      window.umami.track('share-whatsapp');
+    }
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(`${shareText} ${url}`)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const shareToLinkedIn = () => {
+    if (typeof window !== 'undefined' && window.umami) {
+      window.umami.track('share-linkedin');
+    }
     const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
     window.open(linkedinUrl, '_blank');
   };
@@ -30,6 +39,9 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ title, url }) => {
   const shareNative = async () => {
     if (navigator.share) {
       try {
+        if (typeof window !== 'undefined' && window.umami) {
+          window.umami.track('share-native');
+        }
         await navigator.share({
           title: shareText,
           url: url,
