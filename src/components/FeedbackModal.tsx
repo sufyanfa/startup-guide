@@ -35,9 +35,10 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
   onClose,
   onSubmit,
 }) => {
+  const [hasSubmitted, setHasSubmitted] = React.useState(false);
   useEffect(() => {
     const tallyWindow = window as TallyWindow;
-    if (isOpen && typeof window !== 'undefined' && tallyWindow.Tally) {
+    if (isOpen && !hasSubmitted && typeof window !== 'undefined' && tallyWindow.Tally) {
       // Open Tally popup when modal should be shown
       tallyWindow.Tally.openPopup('m6lr85', {
         layout: 'modal',
@@ -50,11 +51,12 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
         },
         onClose: () => {
           onClose();
+          setHasSubmitted(true);
         },
         onSubmit: (payload: Record<string, unknown>) => {
           console.log('Form submitted:', payload);
+          setHasSubmitted(true);
           onSubmit();
-          onClose();
         },
         hiddenFields: {
           source: 'startup-guide-completion',
@@ -62,7 +64,7 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
         }
       });
     }
-  }, [isOpen, onClose, onSubmit]);
+  }, [isOpen, hasSubmitted, onClose, onSubmit]);
 
   useEffect(() => {
     // Close Tally popup when modal should be closed
