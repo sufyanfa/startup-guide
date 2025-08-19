@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
+import { ChevronRight, CheckCircle, ChevronLeft } from 'lucide-react';
 import { APP_CONSTANTS } from '../constants/index';
 import { ShareButtons } from './ShareButtons';
 import { FeedbackModal } from './FeedbackModal';
@@ -18,7 +18,6 @@ interface NavigationProps {
 export const Navigation: React.FC<NavigationProps> = ({
   currentIndex,
   totalSections,
-  isCompleted,
   showQuiz,
   onPrevious,
   onNext,
@@ -65,7 +64,7 @@ export const Navigation: React.FC<NavigationProps> = ({
               {isLastPage ? (
                 <CheckCircle className="h-4 w-4" />
               ) : (
-                <ChevronRight className="h-4 w-4" />
+                <ChevronLeft className="h-4 w-4" />
               )}
             </Button>
           )}

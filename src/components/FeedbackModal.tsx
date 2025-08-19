@@ -3,6 +3,27 @@
 import React, { useEffect } from 'react';
 import Script from 'next/script';
 
+interface TallyWindow extends Window {
+  Tally?: {
+    openPopup: (id: string, options: TallyOptions) => void;
+    closePopup: (id: string) => void;
+  };
+}
+
+interface TallyOptions {
+  layout: string;
+  width: number;
+  hideTitle: boolean;
+  overlay: boolean;
+  emoji: {
+    text: string;
+    animation: string;
+  };
+  onClose: () => void;
+  onSubmit: (payload: Record<string, unknown>) => void;
+  hiddenFields: Record<string, string>;
+}
+
 interface FeedbackModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -15,9 +36,10 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
   onSubmit,
 }) => {
   useEffect(() => {
-    if (isOpen && typeof window !== 'undefined' && (window as any).Tally) {
+    const tallyWindow = window as TallyWindow;
+    if (isOpen && typeof window !== 'undefined' && tallyWindow.Tally) {
       // Open Tally popup when modal should be shown
-      (window as any).Tally.openPopup('m6lr85', {
+      tallyWindow.Tally.openPopup('m6lr85', {
         layout: 'modal',
         width: 600,
         hideTitle: true,
@@ -29,7 +51,7 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
         onClose: () => {
           onClose();
         },
-        onSubmit: (payload: any) => {
+        onSubmit: (payload: Record<string, unknown>) => {
           console.log('Form submitted:', payload);
           onSubmit();
           onClose();
@@ -44,8 +66,9 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({
 
   useEffect(() => {
     // Close Tally popup when modal should be closed
-    if (!isOpen && typeof window !== 'undefined' && (window as any).Tally) {
-      (window as any).Tally.closePopup('m6lr85');
+    const tallyWindow = window as TallyWindow;
+    if (!isOpen && typeof window !== 'undefined' && tallyWindow.Tally) {
+      tallyWindow.Tally.closePopup('m6lr85');
     }
   }, [isOpen]);
 
