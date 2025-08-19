@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
 import { APP_CONSTANTS } from '../constants/index';
 import { ShareButtons } from './ShareButtons';
+import { FeedbackModal } from './FeedbackModal';
 
 interface NavigationProps {
   currentIndex: number;
@@ -24,6 +25,20 @@ export const Navigation: React.FC<NavigationProps> = ({
   onComplete
 }) => {
   const isLastPage = currentIndex === totalSections - 1;
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+
+  const handleMarkAsRead = () => {
+    if (isLastPage) {
+      setShowFeedbackModal(true);
+    } else {
+      onComplete();
+    }
+  };
+
+  const handleFeedbackSubmit = () => {
+    // Mark the section as complete after feedback submission
+    onComplete();
+  };
   
   return (
     <div className="space-y-6">
@@ -41,7 +56,7 @@ export const Navigation: React.FC<NavigationProps> = ({
         <div className="flex items-center gap-2">
           {!isCompleted && !showQuiz && (
             <Button
-              onClick={onComplete}
+              onClick={handleMarkAsRead}
               variant="outline"
               className="flex items-center gap-2"
             >
@@ -68,6 +83,12 @@ export const Navigation: React.FC<NavigationProps> = ({
           url={typeof window !== 'undefined' ? window.location.href : ''}
         />
       )}
+      
+      <FeedbackModal
+        isOpen={showFeedbackModal}
+        onClose={() => setShowFeedbackModal(false)}
+        onSubmit={handleFeedbackSubmit}
+      />
     </div>
   );
 };

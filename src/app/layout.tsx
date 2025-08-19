@@ -58,6 +58,7 @@ export default function RootLayout({
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
         <script defer src="https://cloud.umami.is/script.js" data-website-id="3395d308-5729-4f57-bde5-bf4e5f24d58f"></script>
+        <script async src="https://tally.so/widgets/embed.js"></script>
       </head>
       <body
         className={`${rubik.variable} ${geistMono.variable} antialiased font-sans`}
