@@ -18,16 +18,16 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://startup.sufyanfa.com'),
-  title: "دليل الشركات الناشئة | كيفية بناء شركة ناشئة ناجحة",
-  description: "دليلك المبسّط والعملي لبناء شركة ناشئة ناجحة من الفكرة إلى التنفيذ. تعلم أساسيات ريادة الأعمال، تطوير المنتجات، بناء الفرق والحصول على التمويل.",
+  title: "دليل الشركات الناشئة | تعلم بناء Startup ناجح خطوة بخطوة",
+  description: "دليل تفاعلي شامل لتعلم ريادة الأعمال وبناء الشركات الناشئة الناجحة. 8 فصول عملية + اختبارات تفاعلية. ابدأ رحلتك الآن مجاناً!",
   keywords: "شركة ناشئة، ريادة أعمال، تطوير منتج، تمويل، فريق عمل، نمو شركة، أعمال",
   authors: [{ name: "Sufyan Farea" }],
   creator: "Sufyan Farea",
   publisher: "Sufyan Farea",
   robots: "index, follow",
   openGraph: {
-    title: "دليل الشركات الناشئة | كيفية بناء شركة ناشئة ناجحة",
-    description: "دليلك المبسّط والعملي لبناء شركة ناشئة ناجحة من الفكرة إلى التنفيذ",
+    title: "دليل الشركات الناشئة | تعلم بناء Startup ناجح",
+    description: "دليل تفاعلي شامل لتعلم ريادة الأعمال وبناء الشركات الناشئة الناجحة. 8 فصول عملية + اختبارات تفاعلية.",
     type: "website",
     locale: "ar_SA",
     siteName: "دليل الشركات الناشئة",
@@ -40,12 +40,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "دليل الشركات الناشئة | كيفية بناء شركة ناشئة ناجحة",
-    description: "دليلك المبسّط والعملي لبناء شركة ناشئة ناجحة من الفكرة إلى التنفيذ",
+    title: "دليل الشركات الناشئة | تعلم بناء Startup ناجح",
+    description: "دليل تفاعلي شامل لتعلم ريادة الأعمال وبناء الشركات الناشئة الناجحة. 8 فصول عملية + اختبارات تفاعلية.",
     images: ["/startup.jpg"],
   },
   alternates: {
     canonical: "/",
+  },
+  icons: {
+    icon: "/badge-check.svg",
   },
 };
 
