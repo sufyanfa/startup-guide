@@ -4,7 +4,7 @@ export const formatContent = (content: string) => {
   // Handle inline formatting (bold text and links)
   const processInlineFormatting = (text: string) => {
     // First process links, then bold text
-    let processedContent: React.ReactNode[] = [];
+    const processedContent: React.ReactNode[] = [];
     
     // Split by links pattern [text](url)
     const linkPattern = /(\[([^\]]+)\]\(([^)]+)\))/g;
