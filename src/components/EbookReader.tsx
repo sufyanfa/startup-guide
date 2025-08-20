@@ -87,7 +87,7 @@ const EbookReader: React.FC = () => {
           onQuizToggle={handleQuizToggle}
         />
 
-        {!showQuiz && currentSection.quiz && (
+        {!showQuiz && currentSection.quiz && currentSectionIndex !== 0 && (
           <QuizPrompt onStartQuiz={handleStartQuiz} />
         )}
 
