@@ -3,6 +3,15 @@ export interface Section {
   title: string;
   content: string;
   quiz?: Quiz;
+  stories?: Story[];
+}
+
+export interface Story {
+  company: string;
+  founder: string;
+  story: string;
+  lesson: string;
+  icon?: 'lightbulb' | 'trending' | 'users';
 }
 
 export interface Quiz {

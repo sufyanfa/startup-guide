@@ -5,6 +5,7 @@ import { Section } from '../types/inedx';
 import { formatContent } from '../utils/contentFormatter';
 import { APP_CONSTANTS } from '../constants/index';
 import QuizComponent from './QuizComponent';
+import { Story } from './Story';
 
 interface ContentDisplayProps {
   section: Section;
@@ -44,9 +45,29 @@ export const ContentDisplay: React.FC<ContentDisplayProps> = ({
               />
             </section>
           ) : (
-            <section className="prose prose-lg max-w-none" aria-label="محتوى الفصل">
-              {formatContent(section.content)}
-            </section>
+            <>
+              <section className="prose prose-lg max-w-none" aria-label="محتوى الفصل">
+                {formatContent(section.content)}
+              </section>
+              
+              {section.stories && section.stories.length > 0 && (
+                <section className="mt-8" aria-label="قصص نجاح">
+                  <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">
+                    🌟 قصة نجاح
+                  </h3>
+                  {section.stories.map((story, index) => (
+                    <Story
+                      key={index}
+                      company={story.company}
+                      founder={story.founder}
+                      story={story.story}
+                      lesson={story.lesson}
+                      icon={story.icon}
+                    />
+                  ))}
+                </section>
+              )}
+            </>
           )}
         </CardContent>
       </Card>
