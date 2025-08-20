@@ -1,6 +1,21 @@
 import React from 'react';
 
 export const formatContent = (content: string) => {
+  // Handle inline bold text
+  const processInlineFormatting = (text: string) => {
+    const parts = text.split(/(\*\*[^*]+\*\*)/g);
+    return parts.map((part, partIndex) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return (
+          <strong key={partIndex} className="font-semibold text-gray-900 dark:text-gray-100">
+            {part.replace(/\*\*/g, '')}
+          </strong>
+        );
+      }
+      return part;
+    });
+  };
+
   const lines = content.split('\n');
   return lines.map((line, index) => {
     // Handle headers
@@ -35,11 +50,12 @@ export const formatContent = (content: string) => {
       );
     }
 
-    // Handle lists
-    if (line.startsWith('*') || line.startsWith('-')) {
+    // Handle lists  
+    if (line.startsWith('- ')) {
+      const listContent = line.replace(/^-\s*/, '');
       return (
         <li key={index} className="mr-6 mb-2 text-gray-700 list-disc dark:text-gray-300">
-          {line.replace(/^[*-]\s*/, '')}
+          {processInlineFormatting(listContent)}
         </li>
       );
     }
@@ -49,20 +65,6 @@ export const formatContent = (content: string) => {
       return <br key={index} />;
     }
 
-    // Handle inline bold text
-    const processInlineFormatting = (text: string) => {
-      const parts = text.split(/(\*\*.*?\*\*)/g);
-      return parts.map((part, partIndex) => {
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return (
-            <strong key={partIndex} className="font-semibold text-gray-900 dark:text-gray-100">
-              {part.replace(/\*\*/g, '')}
-            </strong>
-          );
-        }
-        return part;
-      });
-    };
 
     // Regular paragraphs
     return (
