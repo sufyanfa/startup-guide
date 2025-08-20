@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Label } from './ui/label';
-import { CheckCircle, XCircle, ArrowRight, RotateCcw } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw, ArrowLeft } from 'lucide-react';
 import { Quiz } from '@/types/inedx';
 import { 
   QUIZ_SCORE_THRESHOLDS, 
@@ -108,8 +108,8 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ quiz, onComplete, onBack 
           </p>
         </div>
 
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
-          <div className="text-4xl font-bold text-blue-600 mb-2">
+        <div className="bg-primary/10 rounded-lg p-6">
+          <div className="text-4xl font-bold text-primary mb-2">
             {Math.round(score)}%
           </div>
           <p className="text-sm text-gray-600">
@@ -164,15 +164,6 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ quiz, onComplete, onBack 
 
   return (
     <div className="space-y-6">
-      {/* Progress */}
-      <div className="flex items-center justify-between">
-        <Badge variant="outline">
-          {QUIZ_CONSTANTS.QUESTION} {currentQuestionIndex + 1} من {quiz.questions.length}
-        </Badge>
-        <Button onClick={onBack} variant="ghost" size="sm">
-          {QUIZ_CONSTANTS.BACK_TO_CONTENT}
-        </Button>
-      </div>
 
       {/* Question */}
       <Card>
@@ -194,7 +185,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ quiz, onComplete, onBack 
                   className={`flex items-center space-x-2 space-x-reverse p-3 rounded-lg border transition-colors ${
                     status === 'correct' ? 'bg-green-50 border-green-300' :
                     status === 'incorrect' ? 'bg-red-50 border-red-300' :
-                    'bg-white border-gray-200 hover:bg-gray-50'
+                    'border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800'
                   }`}
                 >
                   <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer text-right">
@@ -222,6 +213,13 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ quiz, onComplete, onBack 
         </CardContent>
       </Card>
 
+      {/* Progress */}
+      <div className="flex items-center justify-between">
+        <Badge variant="outline">
+          {QUIZ_CONSTANTS.QUESTION} {currentQuestionIndex + 1} من {quiz.questions.length}
+        </Badge>
+      </div>
+
       {/* Navigation */}
       <div className="flex justify-between">
         <Button onClick={onBack} variant="outline">
@@ -236,7 +234,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ quiz, onComplete, onBack 
               className="flex items-center gap-2"
             >
               {isLastQuestion ? QUIZ_CONSTANTS.FINISH_QUIZ : QUIZ_CONSTANTS.NEXT}
-              <ArrowRight className="h-4 w-4" />
+              <ArrowLeft className="h-4 w-4" />
             </Button>
           ) : (
             <Button
@@ -244,7 +242,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ quiz, onComplete, onBack 
               className="flex items-center gap-2"
             >
               {isLastQuestion ? QUIZ_CONSTANTS.SHOW_RESULTS : QUIZ_CONSTANTS.NEXT_QUESTION}
-              <ArrowRight className="h-4 w-4" />
+              <ArrowLeft className="h-4 w-4" />
             </Button>
           )}
         </div>

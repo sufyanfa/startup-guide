@@ -6,7 +6,7 @@ export const QUIZ_SCORE_THRESHOLDS = {
 export const QUIZ_MESSAGES = {
   EXCELLENT: 'ممتاز! لديك فهم عميق للمحتوى',
   GOOD: 'جيد! يمكنك مراجعة بعض النقاط',
-  NEEDS_REVIEW: 'يحتاج إلى مراجعة المحتوى مرة أخرى'
+  NEEDS_REVIEW: 'تحتاج  إلى مراجعة المحتوى مرة أخرى'
 } as const;
 
 export const QUIZ_EMOJIS = {
