@@ -1,19 +1,52 @@
 import React from 'react';
 
 export const formatContent = (content: string) => {
-  // Handle inline bold text
+  // Handle inline formatting (bold text and links)
   const processInlineFormatting = (text: string) => {
-    const parts = text.split(/(\*\*[^*]+\*\*)/g);
-    return parts.map((part, partIndex) => {
-      if (part.startsWith('**') && part.endsWith('**')) {
-        return (
-          <strong key={partIndex} className="font-semibold text-gray-900 dark:text-gray-100">
-            {part.replace(/\*\*/g, '')}
-          </strong>
+    // First process links, then bold text
+    let processedContent: React.ReactNode[] = [];
+    
+    // Split by links pattern [text](url)
+    const linkPattern = /(\[([^\]]+)\]\(([^)]+)\))/g;
+    const parts = text.split(linkPattern);
+    
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i];
+      
+      // Check if this is a link match
+      if (i % 4 === 1) { // Full link match
+        const linkText = parts[i + 1]; // Link text
+        const linkUrl = parts[i + 2];  // Link URL
+        processedContent.push(
+          <a 
+            key={i} 
+            href={linkUrl} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 underline dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+          >
+            {linkText}
+          </a>
         );
+        i += 2; // Skip the text and url parts as we've processed them
+      } else if (i % 4 === 0) { // Regular text that might contain bold
+        // Process bold formatting in non-link text
+        const boldParts = part.split(/(\*\*[^*]+\*\*)/g);
+        const boldProcessed = boldParts.map((boldPart, boldIndex) => {
+          if (boldPart.startsWith('**') && boldPart.endsWith('**')) {
+            return (
+              <strong key={`${i}-${boldIndex}`} className="font-semibold text-gray-900 dark:text-gray-100">
+                {boldPart.replace(/\*\*/g, '')}
+              </strong>
+            );
+          }
+          return boldPart;
+        });
+        processedContent.push(...boldProcessed);
       }
-      return part;
-    });
+    }
+    
+    return processedContent;
   };
 
   const lines = content.split('\n');
