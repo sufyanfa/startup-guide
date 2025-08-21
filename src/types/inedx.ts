@@ -4,6 +4,15 @@ export interface Section {
   content: string;
   quiz?: Quiz;
   stories?: Story[];
+  consultation?: Consultation;
+}
+
+export interface Consultation {
+  title: string;
+  description: string;
+  cta: string;
+  features: string[];
+  contactUrl?: string;
 }
 
 export interface Story {

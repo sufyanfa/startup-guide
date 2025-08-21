@@ -9,6 +9,7 @@ import { TableOfContents } from './TableOfContents';
 import { ContentDisplay } from './ContentDisplay';
 import { QuizPrompt } from './QuizPrompt';
 import { Navigation } from './Navigation';
+import { Consultation } from './Consultation';
 
 const EbookReader: React.FC = () => {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
@@ -86,6 +87,16 @@ const EbookReader: React.FC = () => {
           onQuizComplete={handleQuizComplete}
           onQuizToggle={handleQuizToggle}
         />
+
+        {currentSection.consultation && (
+          <Consultation
+            title={currentSection.consultation.title}
+            description={currentSection.consultation.description}
+            cta={currentSection.consultation.cta}
+            features={currentSection.consultation.features}
+            contactUrl={currentSection.consultation.contactUrl}
+          />
+        )}
 
         {!showQuiz && currentSection.quiz && currentSectionIndex !== 0 && (
           <QuizPrompt onStartQuiz={handleStartQuiz} />
