@@ -31,7 +31,7 @@ export const Story: React.FC<StoryProps> = ({
   };
 
   return (
-    <Card className="mb-6">
+    <Card className="mb-4">
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0 mt-1">
@@ -54,7 +54,7 @@ export const Story: React.FC<StoryProps> = ({
               </p>
             </div>
             
-            <div className="bg-green-100 rounded-lg p-3">
+            <div className="bg-green-100 rounded-md p-3">
               <p className="text-green-800 font-medium text-sm">
                 الدرس المستفاد: {lesson}
               </p>

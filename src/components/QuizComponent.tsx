@@ -108,7 +108,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ quiz, onComplete, onBack 
           </p>
         </div>
 
-        <div className="bg-primary/10 rounded-lg p-6">
+        <div className="bg-primary/10 rounded-md p-6">
           <div className="text-4xl font-bold text-primary mb-2">
             {Math.round(score)}%
           </div>
@@ -182,13 +182,14 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ quiz, onComplete, onBack 
               return (
                 <div
                   key={index}
-                  className={`flex items-center space-x-2 space-x-reverse p-3 rounded-lg border transition-colors ${
+                  className={`flex items-center justify-end space-x-2 space-x-reverse p-3 rounded-md border transition-colors ${
                     status === 'correct' ? 'bg-green-50 border-green-300' :
                     status === 'incorrect' ? 'bg-red-50 border-red-300' :
                     'border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800'
                   }`}
+                  dir="rtl"
                 >
-                  <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer text-right">
+                  <Label htmlFor={`option-${index}`} className="flex-1 cursor-pointer text-right leading-relaxed">
                     {option}
                   </Label>
                   <RadioGroupItem value={index.toString()} id={`option-${index}`} />
@@ -205,7 +206,7 @@ const QuizComponent: React.FC<QuizComponentProps> = ({ quiz, onComplete, onBack 
 
           {/* Explanation */}
           {showExplanation && currentQuestion.explanation && (
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <div className="mt-6 p-4 bg-blue-50 rounded-md border border-blue-200">
               <h4 className="font-medium text-blue-800 mb-2">{QUIZ_CONSTANTS.EXPLANATION}</h4>
               <p className="text-blue-700 text-sm">{currentQuestion.explanation}</p>
             </div>

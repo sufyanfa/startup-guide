@@ -45,7 +45,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
               <button
                 key={section.id}
                 onClick={() => onSectionSelect(index)}
-                className={`text-right p-3 rounded-lg border transition-colors ${
+                className={`text-right p-3 rounded-md border transition-colors ${
                   index === currentSectionIndex
                     ? 'border-primary text-primary dark:bg-primary/5'
                     : 'border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800'

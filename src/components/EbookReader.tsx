@@ -98,7 +98,7 @@ const EbookReader: React.FC = () => {
           />
         )}
 
-        {!showQuiz && currentSection.quiz && currentSectionIndex !== 0 && (
+        {!showQuiz && currentSection.quiz && currentSectionIndex !== 0 && currentSectionIndex !== sections.length - 1 && (
           <QuizPrompt onStartQuiz={handleStartQuiz} />
         )}
 
