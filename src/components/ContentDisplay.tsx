@@ -5,6 +5,7 @@ import { Section } from '../types/inedx';
 import { formatContent } from '../utils/contentFormatter';
 import { APP_CONSTANTS } from '../constants/index';
 import QuizComponent from './QuizComponent';
+import AssessmentComponent from './AssessmentComponent';
 import { Story } from './Story';
 
 interface ContentDisplayProps {
@@ -12,8 +13,11 @@ interface ContentDisplayProps {
   sectionIndex: number;
   totalSections: number;
   showQuiz: boolean;
+  showAssessment: boolean;
   onQuizComplete: (score: number) => void;
+  onAssessmentComplete: () => void;
   onQuizToggle: (show: boolean) => void;
+  onAssessmentToggle: (show: boolean) => void;
 }
 
 export const ContentDisplay: React.FC<ContentDisplayProps> = ({
@@ -21,8 +25,11 @@ export const ContentDisplay: React.FC<ContentDisplayProps> = ({
   sectionIndex,
   totalSections,
   showQuiz,
+  showAssessment,
   onQuizComplete,
-  onQuizToggle
+  onAssessmentComplete,
+  onQuizToggle,
+  onAssessmentToggle
 }) => {
   return (
     <article className="mb-6">
@@ -42,6 +49,15 @@ export const ContentDisplay: React.FC<ContentDisplayProps> = ({
                 quiz={section.quiz}
                 onComplete={onQuizComplete}
                 onBack={() => onQuizToggle(false)}
+              />
+            </section>
+          ) : showAssessment && section.assessment ? (
+            <section aria-label="تقييم الوضع الحالي">
+              <AssessmentComponent
+                assessment={section.assessment}
+                sectionId={section.id}
+                onComplete={onAssessmentComplete}
+                onBack={() => onAssessmentToggle(false)}
               />
             </section>
           ) : (

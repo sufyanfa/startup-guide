@@ -3,7 +3,6 @@ import { Rubik, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { StartupGuideSchema } from "@/components/StructuredData";
 import { PerformanceMonitor } from "@/components/PerformanceMonitor";
-import { DevelopmentAlert } from "@/components/DevelopmentAlert";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from '@vercel/analytics/next';
 
@@ -70,7 +69,6 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <StartupGuideSchema />
           <PerformanceMonitor />
-          <DevelopmentAlert />
           {children}
           <Analytics />
         </ThemeProvider>

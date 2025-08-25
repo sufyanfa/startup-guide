@@ -8,12 +8,15 @@ import { AppHeader } from './AppHeader';
 import { TableOfContents } from './TableOfContents';
 import { ContentDisplay } from './ContentDisplay';
 import { QuizPrompt } from './QuizPrompt';
+import { AssessmentPrompt } from './AssessmentPrompt';
+import { AssessmentCleaner } from './AssessmentCleaner';
 import { Navigation } from './Navigation';
 import { Consultation } from './Consultation';
 
 const EbookReader: React.FC = () => {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [showQuiz, setShowQuiz] = useState(false);
+  const [showAssessment, setShowAssessment] = useState(false);
   
   const {
     progress,
@@ -30,6 +33,7 @@ const EbookReader: React.FC = () => {
   const goToSection = (index: number) => {
     setCurrentSectionIndex(index);
     setShowQuiz(false);
+    setShowAssessment(false);
     updateCurrentSection(index);
   };
 
@@ -59,12 +63,27 @@ const EbookReader: React.FC = () => {
     setShowQuiz(true);
   };
 
+  const handleStartAssessment = () => {
+    setShowAssessment(true);
+  };
+
   const handleQuizToggle = (show: boolean) => {
     setShowQuiz(show);
   };
 
+  const handleAssessmentToggle = (show: boolean) => {
+    setShowAssessment(show);
+  };
+
+  const handleAssessmentComplete = () => {
+    // For now, just complete the section. In the future, we might want to store recommendations
+    completeSection(currentSection.id);
+    setShowAssessment(false);
+  };
+
   return (
     <main className="min-h-screen bg-background p-4" dir="rtl" role="main">
+      <AssessmentCleaner />
       <div className="max-w-4xl mx-auto">
         <AppHeader
           progressPercentage={progressPercentage}
@@ -84,8 +103,11 @@ const EbookReader: React.FC = () => {
           sectionIndex={currentSectionIndex}
           totalSections={sections.length}
           showQuiz={showQuiz}
+          showAssessment={showAssessment}
           onQuizComplete={handleQuizComplete}
+          onAssessmentComplete={handleAssessmentComplete}
           onQuizToggle={handleQuizToggle}
+          onAssessmentToggle={handleAssessmentToggle}
         />
 
         {currentSection.consultation && (
@@ -98,15 +120,19 @@ const EbookReader: React.FC = () => {
           />
         )}
 
-        {!showQuiz && currentSection.quiz && currentSectionIndex !== 0 && currentSectionIndex !== sections.length - 1 && (
+        {!showQuiz && !showAssessment && currentSection.quiz && currentSectionIndex !== 0 && currentSectionIndex !== sections.length - 1 && (
           <QuizPrompt onStartQuiz={handleStartQuiz} />
+        )}
+        
+        {!showQuiz && !showAssessment && currentSection.assessment && currentSectionIndex !== 0 && currentSectionIndex !== sections.length - 1 && (
+          <AssessmentPrompt onStartAssessment={handleStartAssessment} />
         )}
 
         <Navigation
           currentIndex={currentSectionIndex}
           totalSections={sections.length}
           isCompleted={isCurrentSectionCompleted}
-          showQuiz={showQuiz}
+          showQuiz={showQuiz || showAssessment}
           onPrevious={prevSection}
           onNext={nextSection}
           onComplete={handleCompleteSection}

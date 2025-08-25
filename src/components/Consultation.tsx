@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
-import { MessageCircle, Target, Lightbulb, TrendingUp, CheckCircle } from 'lucide-react';
+import { MessageCircle, Target, CheckCircle } from 'lucide-react';
 
 interface ConsultationProps {
   title: string;
