@@ -119,9 +119,10 @@ export const recommendations: Recommendation[] = [
     priority: 'high',
     resources: [
       {
-        name: 'دليل تحقق الأفكار',
+        name: 'دليل العصف الذهني',
         type: 'guide',
-        description: 'خطوات عملية لتحقق من صحة فكرة مشروعك',
+        url: 'https://miro.com/ar/brainstorming/what-is-brainstorming/',
+        description: 'كيفية توليد أفكار مبتكرة من خلال العصف الذهني',
         pricing: 'free',
         setup_time: '3-5 hours',
         difficulty: 'beginner'
@@ -130,26 +131,6 @@ export const recommendations: Recommendation[] = [
     ],
     conditions: [
       { questionId: 'startup_stage', operator: 'equals', value: 'just_idea' }
-    ]
-  },
-  {
-    id: 'problem_validation_weak',
-    title: 'عزز من عملية تحقق المشكلة',
-    description: 'يبدو أنك تحتاج لتعزيز عملية التحقق من المشكلة التي تحلها',
-    category: 'marketing',
-    priority: 'high',
-    resources: [
-      {
-        name: 'دليل مقابلات العملاء',
-        type: 'guide',
-        description: 'كيفية إجراء مقابلات فعالة مع العملاء المحتملين',
-        pricing: 'free',
-        setup_time: '2-3 hours',
-        difficulty: 'beginner'
-      }
-    ],
-    conditions: [
-      { questionId: 'problem_validation', operator: 'equals', value: 'not_validated' }
     ]
   },
 
@@ -175,6 +156,27 @@ export const recommendations: Recommendation[] = [
       { questionId: 'user_feedback', operator: 'equals', value: 'rarely' }
     ]
   },
+  {
+    id: 'no_user_feedback_yet',
+    title: 'ابدأ في جمع تعليقات المستخدمين',
+    description: 'حان الوقت للبدء في جمع تعليقات المستخدمين حول منتجك',
+    category: 'development',
+    priority: 'high',
+    resources: [
+      {
+        name: 'دليل مقابلات المستخدمين',
+        type: 'guide',
+        description: 'كيفية إجراء مقابلات فعالة مع المستخدمين',
+        pricing: 'free',
+        setup_time: '2-3 hours',
+        difficulty: 'beginner'
+      },
+      resources.find(r => r.name === 'Mixpanel')!
+    ],
+    conditions: [
+      { questionId: 'user_feedback', operator: 'equals', value: 'never' }
+    ]
+  },
 
   // Team recommendations
   {
@@ -198,23 +200,23 @@ export const recommendations: Recommendation[] = [
     ]
   },
   {
-    id: 'team_commitment_issue',
-    title: 'زيادة التفرغ والالتزام',
-    description: 'استراتيجيات لزيادة تفرغ الفريق والتركيز على المشروع',
+    id: 'solo_founder_support',
+    title: 'استراتيجيات الرائد الفردي',
+    description: 'نصائح وأدوات لإدارة الشركة الناشئة كرائد فردي',
     category: 'operations',
-    priority: 'high',
+    priority: 'medium',
     resources: [
       {
-        name: 'دليل إدارة الوقت لرواد الأعمال',
+        name: 'دليل الرائد الفردي',
         type: 'guide',
-        description: 'كيفية تنظيم الوقت والانتقال للعمل بدوام كامل',
+        description: 'كيفية إدارة جميع جوانب الشركة بفعالية',
         pricing: 'free',
         setup_time: '1-2 hours',
-        difficulty: 'beginner'
+        difficulty: 'intermediate'
       }
     ],
     conditions: [
-      { questionId: 'team_commitment', operator: 'equals', value: 'parttime' }
+      { questionId: 'cofounder_status', operator: 'equals', value: 'solo_prefer' }
     ]
   },
 
@@ -238,6 +240,48 @@ export const recommendations: Recommendation[] = [
     ],
     conditions: [
       { questionId: 'money_path', operator: 'equals', value: 'no_clear_path' }
+    ]
+  },
+
+  // Leadership and execution recommendations
+  {
+    id: 'improve_focus_strategy',
+    title: 'تحسين استراتيجية التركيز',
+    description: 'تعلم كيفية التركيز على الأولويات الأهم لنمو شركتك',
+    category: 'operations',
+    priority: 'high',
+    resources: [
+      {
+        name: 'دليل إدارة الأولويات',
+        type: 'guide',
+        description: 'كيفية تحديد الأولويات والتركيز على ما يهم فعلاً',
+        pricing: 'free',
+        setup_time: '1-2 hours',
+        difficulty: 'beginner'
+      }
+    ],
+    conditions: [
+      { questionId: 'focus_strategy', operator: 'equals', value: 'many_tasks' }
+    ]
+  },
+  {
+    id: 'develop_strategic_thinking',
+    title: 'تطوير التفكير الاستراتيجي',
+    description: 'تعلم كيفية التخطيط الاستراتيجي بدلاً من ردود الأفعال',
+    category: 'operations',
+    priority: 'high',
+    resources: [
+      {
+        name: 'دليل التخطيط الاستراتيجي',
+        type: 'guide',
+        description: 'أدوات وتقنيات للتخطيط الاستراتيجي الفعال',
+        pricing: 'free',
+        setup_time: '2-3 hours',
+        difficulty: 'intermediate'
+      }
+    ],
+    conditions: [
+      { questionId: 'focus_strategy', operator: 'equals', value: 'reactive' }
     ]
   },
 

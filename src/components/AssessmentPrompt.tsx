@@ -12,7 +12,7 @@ interface AssessmentPromptProps {
 export const AssessmentPrompt: React.FC<AssessmentPromptProps> = ({ 
   onStartAssessment, 
   title = 'قيّم وضعك الحالي',
-  description = 'احصل على توصيات مخصصة بناءً على مرحلة مشروعك واحتياجاتك الحالية. إجاباتك ستُحفظ أثناء التقييم وتُحذف تلقائياً عند إعادة تحميل الصفحة للحفاظ على خصوصيتك.'
+  description = 'احصل على توصيات مخصصة بناءً على مرحلة مشروعك واحتياجاتك الحالية.'
 }) => {
   return (
     <Card className="mb-6">
