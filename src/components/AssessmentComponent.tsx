@@ -109,7 +109,7 @@ const AssessmentComponent: React.FC<AssessmentComponentProps> = ({
 
   const getPriorityColor = (priority: string) => {
     const colorMap: Record<string, string> = {
-      high: 'border-red-200 bg-red-50',
+      high: 'border-gary-200 bg-gray-50',
       medium: 'border-yellow-200 bg-yellow-50',
       low: 'border-green-200 bg-green-50'
     };

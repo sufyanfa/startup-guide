@@ -2,6 +2,7 @@ export interface Section {
   id: string;
   title: string;
   content: string;
+  image?: string; // Image URL for the section
   quiz?: Quiz; // Legacy - kept for backward compatibility
   assessment?: Assessment; // New assessment system
   stories?: Story[];
@@ -78,7 +79,7 @@ export interface Recommendation {
 
 export interface Resource {
   name: string;
-  type: 'tool' | 'guide' | 'accelerator' | 'service' | 'course';
+  type: 'tool' | 'guide' | 'accelerator' | 'service' | 'course' | 'checklist';
   url?: string;
   description: string;
   pricing?: 'free' | 'paid' | 'freemium';

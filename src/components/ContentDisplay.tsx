@@ -62,6 +62,15 @@ export const ContentDisplay: React.FC<ContentDisplayProps> = ({
             </section>
           ) : (
             <>
+              {section.image && (
+                <div className="mb-6">
+                  <img 
+                    src={section.image} 
+                    alt={section.title}
+                    className="w-full h-auto rounded-lg shadow-md"
+                  />
+                </div>
+              )}
               <section className="prose prose-lg max-w-none" aria-label="محتوى الفصل">
                 {formatContent(section.content)}
               </section>

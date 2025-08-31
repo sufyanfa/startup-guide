@@ -1,6 +1,6 @@
 export const ASSESSMENT_CONSTANTS = {
   ASSESSMENT_COMPLETE: 'اكتمل التقييم!',
-  RECOMMENDATIONS_BASED_ON_ANSWERS: 'التوصيات المخصصة بناءً على إجاباتك (محفوظة تلقائياً)',
+  RECOMMENDATIONS_BASED_ON_ANSWERS: 'التوصيات المخصصة بناءً على إجاباتك',
   NO_SPECIFIC_RECOMMENDATIONS: 'لم نجد توصيات محددة بناءً على إجاباتك.',
   RECOMMENDED_RESOURCES: 'الموارد الموصى بها',
   RETAKE_ASSESSMENT: 'إعادة التقييم',

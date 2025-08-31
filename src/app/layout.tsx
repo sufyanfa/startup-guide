@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://startup.sufyanfa.com'),
   title: "دليل الشركات الناشئة | تعلم بناء Startup ناجح خطوة بخطوة",
-  description: "دليل تفاعلي شامل لتعلم ريادة الأعمال وبناء الشركات الناشئة الناجحة. 8 فصول عملية + اختبارات تفاعلية. ابدأ رحلتك الآن مجاناً!",
+  description: "دليل تفاعلي لتعلم ريادة الأعمال وبناء الشركات الناشئة الناجحة. 8 فصول عملية + اختبارات تفاعلية. ابدأ رحلتك الآن مجاناً!",
   keywords: "شركة ناشئة، ريادة أعمال، تطوير منتج، تمويل، فريق عمل، نمو شركة، أعمال",
   authors: [{ name: "Sufyan Farea" }],
   creator: "Sufyan Farea",
@@ -27,12 +27,12 @@ export const metadata: Metadata = {
   robots: "index, follow",
   openGraph: {
     title: "دليل الشركات الناشئة | تعلم بناء Startup ناجح",
-    description: "دليل تفاعلي شامل لتعلم ريادة الأعمال وبناء الشركات الناشئة الناجحة. 8 فصول عملية + اختبارات تفاعلية.",
+    description: "دليل تفاعلي لتعلم ريادة الأعمال وبناء الشركات الناشئة الناجحة. 8 فصول عملية + اختبارات تفاعلية.",
     type: "website",
     locale: "ar_SA",
     siteName: "دليل الشركات الناشئة",
     images: [{
-      url: "/startup.jpg",
+      url: "/startup-journey-hero.jpg",
       width: 1200,
       height: 630,
       alt: "دليل الشركات الناشئة",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "دليل الشركات الناشئة | تعلم بناء Startup ناجح",
     description: "دليل تفاعلي شامل لتعلم ريادة الأعمال وبناء الشركات الناشئة الناجحة. 8 فصول عملية + اختبارات تفاعلية.",
-    images: ["/startup.jpg"],
+    images: ["/startup-journey-hero.jpg"],
   },
   alternates: {
     canonical: "/",

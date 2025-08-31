@@ -17,7 +17,7 @@ export const QUIZ_EMOJIS = {
 
 export const APP_CONSTANTS = {
   TITLE: 'دليل بناء الشركات الناشئة',
-  TABLE_OF_CONTENTS: 'فهرس المحتويات',
+  TABLE_OF_CONTENTS: 'فهرس المحتوى',
   TEST_YOUR_KNOWLEDGE: 'اختبر فهمك!',
   START_QUIZ: 'ابدأ الاختبار',
   QUIZ_DESCRIPTION: 'بعد قراءة هذا الفصل، يمكنك اختبار مدى فهمك للمحتوى من خلال الأسئلة التفاعلية.',

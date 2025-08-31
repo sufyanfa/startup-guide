@@ -110,27 +110,138 @@ export const resources: Resource[] = [
 ];
 
 export const recommendations: Recommendation[] = [
-  // Idea validation recommendations
+  // 1️⃣ "مجرد فكرة" - just_idea
   {
     id: 'idea_validation_help',
     title: 'تحقق من صحة فكرتك قبل البناء',
-    description: 'بناءً على مرحلة فكرتك، إليك الخطوات العملية للتحقق من صحتها',
+    description: 'استخدم هذه الأدوات والنماذج للتحقق من صحة فكرتك قبل البدء في بناء المنتج.',
     category: 'marketing',
     priority: 'high',
     resources: [
       {
-        name: 'دليل العصف الذهني',
-        type: 'guide',
-        url: 'https://miro.com/ar/brainstorming/what-is-brainstorming/',
-        description: 'كيفية توليد أفكار مبتكرة من خلال العصف الذهني',
+        name: 'أداة Business Model Canvas',
+        type: 'tool',
+        url: 'https://canvanizer.com/new/business-model-canvas',
+        description: 'ارسم نموذج العمل لفكرتك في صفحة واحدة',
         pricing: 'free',
-        setup_time: '3-5 hours',
+        setup_time: '30 minutes',
         difficulty: 'beginner'
       },
-      resources.find(r => r.name === 'Google Analytics')!
+      {
+        name: 'نموذج دراسة الجدوى',
+        type: 'guide',
+        url: 'https://www.monshaat.gov.sa/ar/node/13993',
+        description: 'نموذج دراسة الجدوى لتقييم جدوى فكرتك',
+        pricing: 'free',
+        setup_time: '1 hour',
+        difficulty: 'beginner'
+      },
+      {
+        name: 'تحدث مع 10 عملاء محتملين',
+        type: 'accelerator',
+        url: 'https://www.figma.com/community/file/1398973413369589251',
+        description: 'قائمة بأسئلة لإجراء مقابلات مع العملاء المحتملين للتحقق من صحة فكرتك',
+        pricing: 'free',
+        setup_time: '1 hour',
+        difficulty: 'beginner'
+      },
     ],
     conditions: [
       { questionId: 'startup_stage', operator: 'equals', value: 'just_idea' }
+    ]
+  },
+
+  // 2️⃣ "أبحث في السوق" - researching
+  {
+    id: 'market_research_help',
+    title: 'أدوات وموارد لأبحاث السوق',
+    description: 'اكتشف مدى اهتمام الناس بمجالك وادرس المنافسين بفعالية',
+    category: 'marketing',
+    priority: 'high',
+    resources: [
+      {
+        name: 'أداة Google Trends لتحليل الاهتمام',
+        type: 'tool',
+        url: 'https://trends.google.com',
+        description: 'اكتشف مدى اهتمام الناس بمجالك',
+        pricing: 'free',
+        setup_time: '1 hour',
+        difficulty: 'beginner'
+      },
+      {
+        name: 'أدوات تحليل المنافسين',
+        type: 'guide',
+        url: 'https://bakkah.com/ar/knowledge-center/%D8%A3%D8%AF%D9%88%D8%A7%D8%AA-%D8%AA%D8%AD%D9%84%D9%8A%D9%84-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84',
+        description: 'قائمة بأفضل أدوات  وأساليب تحليل المنافسين',
+        pricing: 'free',
+        setup_time: '2 hours',
+        difficulty: 'intermediate'
+      }
+    ],
+    conditions: [
+      { questionId: 'startup_stage', operator: 'equals', value: 'researching' }
+    ]
+  },
+
+  // 3️⃣ "أبني المنتج الأولي" - building_mvp
+  {
+    id: 'building_mvp_help',
+    title: 'أدوات وإرشادات بناء المنتج الأولي',
+    description: 'ابن منتجك الأولي بسرعة وكفاءة باستخدام أدوات الذكاء الاصطناعي.',
+    category: 'development',
+    priority: 'high',
+    resources: [
+      {
+        name: 'منصات بناء التطبيقات',
+        type: 'tool',
+        url: 'https://base44.com/',
+        description: 'منصات لبناء التطبيقات بأستخدام AI مثل Base44، bolt.new, Bubble',
+        pricing: 'paid',
+        setup_time: '1-2 weeks',
+        difficulty: 'intermediate'
+      },
+      {
+        name: 'قائمة مراجعة الـMVP',
+        type: 'checklist',
+        description: 'تأكد من أن منتجك الأولي: يحل المشكلة الأساسية فقط، سهل الاستخدام للعميل الأول، يمكن بناؤه في 4-8 أسابيع، قابل للقياس والتحسين، يحتوي على طريقة لجمع ملاحظات المستخدمين',
+        pricing: 'free',
+        setup_time: '1 hour',
+        difficulty: 'beginner'
+      }
+    ],
+    conditions: [
+      { questionId: 'startup_stage', operator: 'equals', value: 'building_mvp' }
+    ]
+  },
+
+  // 4️⃣ "لديّ عملاء أوائل" - have_customers
+  {
+    id: 'early_customers_help',
+    title: 'أدوات تتبع رضا العملاء ونمو الشركة',
+    description: 'قس مدى رضا عملائك وطبق استراتيجيات النمو المبكر',
+    category: 'marketing',
+    priority: 'high',
+    resources: [
+      {
+        name: 'أداة تتبع رضا العملاء',
+        type: 'tool',
+        url: 'https://tally.so/',
+        description: 'قس مدى رضا عملائك ومدى احتمال ترشيحهم لك - أدوات مثل Tally.so, Typeform, Google Forms',
+        pricing: 'freemium',
+        setup_time: '2 hours',
+        difficulty: 'beginner'
+      },
+      {
+        name: 'استراتيجيات النمو المبكر',
+        type: 'checklist',
+        description: 'فعل التوصية والمشاركة - برامج الإحالة - تواجد في المجتمعات ذات الصلة - تحسين محركات البحث (SEO)',
+        pricing: 'free',
+        setup_time: '1 week',
+        difficulty: 'intermediate'
+      }
+    ],
+    conditions: [
+      { questionId: 'startup_stage', operator: 'equals', value: 'have_customers' }
     ]
   },
 
