@@ -1,113 +1,5 @@
 import { Recommendation, Resource } from '../types/inedx';
 
-export const resources: Resource[] = [
-  // Accounting Tools
-  {
-    name: 'وافق',
-    type: 'tool',
-    url: 'https://waafq.com',
-    description: 'نظام محاسبة شامل للشركات الصغيرة والمتوسطة',
-    pricing: 'paid',
-    setup_time: '2-4 hours',
-    difficulty: 'beginner'
-  },
-  {
-    name: 'قيود',
-    type: 'tool',
-    url: 'https://qoyod.com',
-    description: 'برنامج محاسبة سحابي للشركات الناشئة',
-    pricing: 'paid',
-    setup_time: '1-2 hours',
-    difficulty: 'beginner'
-  },
-
-  // Marketing Tools
-  {
-    name: 'Semrush',
-    type: 'tool',
-    url: 'https://semrush.com',
-    description: 'أداة تحسين محركات البحث والتسويق الرقمي',
-    pricing: 'paid',
-    setup_time: '2-3 hours',
-    difficulty: 'intermediate'
-  },
-  {
-    name: 'HubSpot',
-    type: 'tool',
-    url: 'https://hubspot.com',
-    description: 'أداة إدارة علاقات العملاء والتسويق',
-    pricing: 'freemium',
-    setup_time: '1-2 hours',
-    difficulty: 'beginner'
-  },
-  {
-    name: 'Google Analytics',
-    type: 'tool',
-    url: 'https://analytics.google.com',
-    description: 'تحليل زوار الموقع والتسويق الرقمي',
-    pricing: 'free',
-    setup_time: '2-4 hours',
-    difficulty: 'intermediate'
-  },
-  {
-    name: 'Mixpanel',
-    type: 'tool',
-    url: 'https://mixpanel.com',
-    description: 'تحليل سلوك المستخدمين في التطبيقات والمواقع',
-    pricing: 'freemium',
-    setup_time: '1-2 hours',
-    difficulty: 'intermediate'
-  },
-
-  // Development Tools
-  {
-    name: 'framer',
-    type: 'tool',
-    url: 'https://framer.com',
-    description: 'بناء المواقع بدون برمجة',
-    pricing: 'freemium',
-    setup_time: '4-8 hours',
-    difficulty: 'intermediate'
-  },
-  {
-    name: 'Figma Make',
-    type: 'tool',
-    url: 'https://www.figma.com/make/',
-    description: 'تحويل الأفكار إلى تصميمات تفاعلية بإستخدام الذكاء الاصطناعي',
-    pricing: 'freemium',
-    setup_time: '2-4 hours',
-    difficulty: 'beginner'
-  },
-  {
-    name: 'Base44',
-    type: 'tool',
-    url: 'https://base44.com',
-    description: 'منصة لبناء التطبيقات بدون كود',
-    pricing: 'paid',
-    setup_time: '4-8 hours',
-    difficulty: 'intermediate'
-  },
-
-  // Funding Resources
-  {
-    name: 'مركز ريادة الأعمال الورقمية (كود)',
-    url: 'https://code.mcit.gov.sa/ar/our-services',
-    type: 'accelerator',
-    description: 'مبادرة حكومية لدعم وتمويل الشركات الناشئة في السعودية',
-    pricing: 'free',
-    setup_time: '4-8 weeks',
-    difficulty: 'intermediate'
-  },
-  {
-    name: 'inspireU',
-    type: 'accelerator',
-    url: 'https://inspireu.com.sa',
-    description: 'مسرعة أعمال تدعم الشركات الناشئة في مراحلها المبكرة',
-    pricing: 'free',
-    setup_time: '2-3 hours',
-    difficulty: 'intermediate'
-  }
-];
 
 export const recommendations: Recommendation[] = [
   // 1️⃣ "مجرد فكرة" - just_idea
@@ -147,7 +39,7 @@ export const recommendations: Recommendation[] = [
       },
     ],
     conditions: [
-      { questionId: 'startup_stage', operator: 'equals', value: 'just_idea' }
+      { questionId: 'startup_stage', operator: 'equals', value: 'seed' }
     ]
   },
 
@@ -179,7 +71,7 @@ export const recommendations: Recommendation[] = [
       }
     ],
     conditions: [
-      { questionId: 'startup_stage', operator: 'equals', value: 'researching' }
+      { questionId: 'startup_stage', operator: 'equals', value: 'exploration' }
     ]
   },
 
@@ -210,7 +102,7 @@ export const recommendations: Recommendation[] = [
       }
     ],
     conditions: [
-      { questionId: 'startup_stage', operator: 'equals', value: 'building_mvp' }
+      { questionId: 'startup_stage', operator: 'equals', value: 'development' }
     ]
   },
 
@@ -241,7 +133,7 @@ export const recommendations: Recommendation[] = [
       }
     ],
     conditions: [
-      { questionId: 'startup_stage', operator: 'equals', value: 'have_customers' }
+      { questionId: 'startup_stage', operator: 'equals', value: 'validation' }
     ]
   },
 
@@ -261,10 +153,18 @@ export const recommendations: Recommendation[] = [
         setup_time: '2-3 hours',
         difficulty: 'intermediate'
       },
-      resources.find(r => r.name === 'Google Analytics')!
+      {
+        name: 'Google Analytics',
+        type: 'tool',
+        url: 'https://analytics.google.com',
+        description: 'تحليل زوار الموقع والتسويق الرقمي',
+        pricing: 'free',
+        setup_time: '2-4 hours',
+        difficulty: 'intermediate'
+      }
     ],
     conditions: [
-      { questionId: 'user_feedback', operator: 'equals', value: 'rarely' }
+      { questionId: 'product_stage', operator: 'equals', value: 'building' }
     ]
   },
   {
@@ -282,10 +182,18 @@ export const recommendations: Recommendation[] = [
         setup_time: '2-3 hours',
         difficulty: 'beginner'
       },
-      resources.find(r => r.name === 'Mixpanel')!
+      {
+        name: 'Mixpanel',
+        type: 'tool',
+        url: 'https://mixpanel.com',
+        description: 'تحليل سلوك المستخدمين في التطبيقات والمواقع',
+        pricing: 'freemium',
+        setup_time: '1-2 hours',
+        difficulty: 'intermediate'
+      }
     ],
     conditions: [
-      { questionId: 'user_feedback', operator: 'equals', value: 'never' }
+      { questionId: 'product_stage', operator: 'equals', value: 'planning' }
     ]
   },
 
@@ -307,7 +215,7 @@ export const recommendations: Recommendation[] = [
       }
     ],
     conditions: [
-      { questionId: 'cofounder_status', operator: 'equals', value: 'looking' }
+      { questionId: 'team_structure', operator: 'equals', value: 'seeking_partner' }
     ]
   },
   {
@@ -327,7 +235,7 @@ export const recommendations: Recommendation[] = [
       }
     ],
     conditions: [
-      { questionId: 'cofounder_status', operator: 'equals', value: 'solo_prefer' }
+      { questionId: 'team_structure', operator: 'equals', value: 'solo' }
     ]
   },
 
@@ -347,10 +255,18 @@ export const recommendations: Recommendation[] = [
         setup_time: '3-4 hours',
         difficulty: 'intermediate'
       },
-      resources.find(r => r.name === 'قيود')!
+      {
+        name: 'قيود',
+        type: 'tool',
+        url: 'https://qoyod.com',
+        description: 'برنامج محاسبة سحابي للشركات الناشئة',
+        pricing: 'paid',
+        setup_time: '1-2 hours',
+        difficulty: 'beginner'
+      }
     ],
     conditions: [
-      { questionId: 'money_path', operator: 'equals', value: 'no_clear_path' }
+      { questionId: 'financial_status', operator: 'equals', value: 'seeking_funding' }
     ]
   },
 
@@ -372,7 +288,7 @@ export const recommendations: Recommendation[] = [
       }
     ],
     conditions: [
-      { questionId: 'focus_strategy', operator: 'equals', value: 'many_tasks' }
+      { questionId: 'execution_focus', operator: 'equals', value: 'exploration' }
     ]
   },
   {
@@ -392,7 +308,7 @@ export const recommendations: Recommendation[] = [
       }
     ],
     conditions: [
-      { questionId: 'focus_strategy', operator: 'equals', value: 'reactive' }
+      { questionId: 'execution_focus', operator: 'equals', value: 'building_systems' }
     ]
   },
 
@@ -414,7 +330,310 @@ export const recommendations: Recommendation[] = [
       }
     ],
     conditions: [
-      { questionId: 'competitive_advantage', operator: 'equals', value: 'no_clear_advantage' }
+      { questionId: 'competitive_position', operator: 'equals', value: 'crowded_market' }
+    ]
+  },
+
+  // Product Development Stage Recommendations
+  {
+    id: 'launch_and_iterate',
+    title: 'إطلاق المنتج وتحسينه',
+    description: 'استراتيجيات لإطلاق منتجك بنجاح وتحسينه بناءً على ملاحظات المستخدمين',
+    category: 'development',
+    priority: 'high',
+    resources: [
+      {
+        name: 'دليل إطلاق المنتج',
+        type: 'guide',
+        description: 'خطوات إطلاق المنتج والتسويق الأولي',
+        pricing: 'free',
+        setup_time: '2-3 hours',
+        difficulty: 'intermediate'
+      },
+      {
+        name: 'أدوات جمع الملاحظات',
+        type: 'tool',
+        url: 'https://tally.so/',
+        description: 'أدوات لجمع ملاحظات المستخدمين وتحليلها',
+        pricing: 'freemium',
+        setup_time: '1-2 hours',
+        difficulty: 'beginner'
+      }
+    ],
+    conditions: [
+      { questionId: 'product_stage', operator: 'equals', value: 'launched' }
+    ]
+  },
+  {
+    id: 'scale_product',
+    title: 'تطوير المنتج للنمو',
+    description: 'تحسين المنتج والبنية التحتية لدعم النمو المتسارع',
+    category: 'development',
+    priority: 'high',
+    resources: [
+      {
+        name: 'استراتيجيات التوسع التقني',
+        type: 'guide',
+        description: 'كيفية بناء منتج قابل للتوسع',
+        pricing: 'free',
+        setup_time: '3-4 hours',
+        difficulty: 'advanced'
+      }
+    ],
+    conditions: [
+      { questionId: 'product_stage', operator: 'equals', value: 'growing' }
+    ]
+  },
+
+  // Team Structure Recommendations
+  {
+    id: 'build_strong_partnership',
+    title: 'تطوير الشراكة القوية',
+    description: 'نصائح لبناء علاقة شراكة فعالة ومستدامة',
+    category: 'operations',
+    priority: 'medium',
+    resources: [
+      {
+        name: 'دليل إدارة الشراكة',
+        type: 'guide',
+        description: 'كيفية إدارة الشراكة وتوزيع المسؤوليات',
+        pricing: 'free',
+        setup_time: '1-2 hours',
+        difficulty: 'beginner'
+      }
+    ],
+    conditions: [
+      { questionId: 'team_structure', operator: 'equals', value: 'partnership' }
+    ]
+  },
+  {
+    id: 'team_management',
+    title: 'إدارة الفريق والقيادة',
+    description: 'أدوات وتقنيات لإدارة الفريق وتحسين الأداء',
+    category: 'operations',
+    priority: 'high',
+    resources: [
+      {
+        name: 'أدوات إدارة المشاريع',
+        type: 'tool',
+        url: 'https://notion.so',
+        description: 'أدوات مثل Notion, Asana, أو Trello لإدارة المهام والمشاريع',
+        pricing: 'freemium',
+        setup_time: '2-3 hours',
+        difficulty: 'beginner'
+      },
+      {
+        name: 'تقنيات القيادة الفعالة',
+        type: 'guide',
+        description: 'مبادئ القيادة الناجحة للشركات الناشئة',
+        pricing: 'free',
+        setup_time: '2-3 hours',
+        difficulty: 'intermediate'
+      }
+    ],
+    conditions: [
+      { questionId: 'team_structure', operator: 'equals', value: 'full_team' }
+    ]
+  },
+
+  // Execution Focus Recommendations
+  {
+    id: 'accelerate_growth',
+    title: 'تسريع النمو وجذب العملاء',
+    description: 'استراتيجيات مثبتة لتسريع نمو العملاء والإيرادات',
+    category: 'marketing',
+    priority: 'high',
+    resources: [
+      {
+        name: 'استراتيجيات التسويق الرقمي',
+        type: 'guide',
+        description: 'تقنيات التسويق الرقمي والنمو السريع',
+        pricing: 'free',
+        setup_time: '3-4 hours',
+        difficulty: 'intermediate'
+      },
+      {
+        name: 'أدوات التسويق والتحليل',
+        type: 'tool',
+        url: 'https://hubspot.com',
+        description: 'أدوات شاملة للتسويق وإدارة العملاء',
+        pricing: 'freemium',
+        setup_time: '2-4 hours',
+        difficulty: 'intermediate'
+      }
+    ],
+    conditions: [
+      { questionId: 'execution_focus', operator: 'equals', value: 'accelerating' }
+    ]
+  },
+  {
+    id: 'scale_operations',
+    title: 'تطوير العمليات للتوسع',
+    description: 'بناء أنظمة وعمليات قابلة للتوسع لدعم النمو السريع',
+    category: 'operations',
+    priority: 'high',
+    resources: [
+      {
+        name: 'دليل أتمتة العمليات',
+        type: 'guide',
+        description: 'كيفية أتمتة العمليات التشغيلية للتوسع',
+        pricing: 'free',
+        setup_time: '4-6 hours',
+        difficulty: 'advanced'
+      },
+      {
+        name: 'أدوات إدارة العمليات',
+        type: 'tool',
+        description: 'أدوات لأتمتة وإدارة العمليات التشغيلية',
+        pricing: 'paid',
+        setup_time: '1-2 weeks',
+        difficulty: 'advanced'
+      }
+    ],
+    conditions: [
+      { questionId: 'execution_focus', operator: 'equals', value: 'scaling' }
+    ]
+  },
+
+  // Financial Status Recommendations
+  {
+    id: 'test_revenue_models',
+    title: 'تجريب نماذج الإيرادات',
+    description: 'اختبار طرق مختلفة لتحقيق الإيرادات والعثور على الأنسب',
+    category: 'accounting',
+    priority: 'high',
+    resources: [
+      {
+        name: 'دليل نماذج الإيرادات',
+        type: 'guide',
+        description: 'أنواع نماذج الإيرادات وكيفية اختبارها',
+        pricing: 'free',
+        setup_time: '2-3 hours',
+        difficulty: 'intermediate'
+      }
+    ],
+    conditions: [
+      { questionId: 'financial_status', operator: 'equals', value: 'testing' }
+    ]
+  },
+  {
+    id: 'optimize_profitability',
+    title: 'تحسين الربحية والكفاءة المالية',
+    description: 'استراتيجيات لتحسين الهوامش الربحية وإدارة التكاليف',
+    category: 'accounting',
+    priority: 'high',
+    resources: [
+      {
+        name: 'دليل إدارة التكاليف',
+        type: 'guide',
+        description: 'تقنيات تحسين الربحية وإدارة التكاليف',
+        pricing: 'free',
+        setup_time: '2-3 hours',
+        difficulty: 'intermediate'
+      },
+      {
+        name: 'وافق',
+        type: 'tool',
+        url: 'https://waafq.com',
+        description: 'نظام محاسبة شامل للشركات الصغيرة والمتوسطة',
+        pricing: 'paid',
+        setup_time: '2-4 hours',
+        difficulty: 'beginner'
+      }
+    ],
+    conditions: [
+      { questionId: 'financial_status', operator: 'equals', value: 'optimizing' }
+    ]
+  },
+  {
+    id: 'investment_and_expansion',
+    title: 'الاستثمار والتوسع',
+    description: 'استراتيجيات استثمار الأرباح في النمو والتوسع',
+    category: 'funding',
+    priority: 'high',
+    resources: [
+      {
+        name: 'دليل استراتيجيات التوسع',
+        type: 'guide',
+        description: 'كيفية استثمار الأرباح في النمو المستدام',
+        pricing: 'free',
+        setup_time: '3-4 hours',
+        difficulty: 'advanced'
+      },
+      {
+        name: 'مركز ريادة الأعمال الرقمية (كود)',
+        url: 'https://code.mcit.gov.sa/ar/our-services',
+        type: 'accelerator',
+        description: 'مبادرة حكومية لدعم وتمويل الشركات الناشئة في السعودية',
+        pricing: 'free',
+        setup_time: '4-8 weeks',
+        difficulty: 'intermediate'
+      }
+    ],
+    conditions: [
+      { questionId: 'financial_status', operator: 'equals', value: 'profitable' }
+    ]
+  },
+
+  // Competitive Position Recommendations
+  {
+    id: 'gradual_competitive_improvement',
+    title: 'تحسين الموقع التنافسي تدريجياً',
+    description: 'استراتيجيات لتحسين منتجك والتنافس بفعالية أكبر',
+    category: 'marketing',
+    priority: 'medium',
+    resources: [
+      {
+        name: 'تحليل المنافسين',
+        type: 'guide',
+        description: 'كيفية تحليل المنافسين وإيجاد الفجوات السوقية',
+        pricing: 'free',
+        setup_time: '2-3 hours',
+        difficulty: 'intermediate'
+      }
+    ],
+    conditions: [
+      { questionId: 'competitive_position', operator: 'equals', value: 'gradual_improvement' }
+    ]
+  },
+  {
+    id: 'maintain_differentiation',
+    title: 'الحفاظ على التميز التنافسي',
+    description: 'استراتيجيات للحفاظ على ميزتك التنافسية وتطويرها',
+    category: 'marketing',
+    priority: 'medium',
+    resources: [
+      {
+        name: 'دليل الابتكار المستمر',
+        type: 'guide',
+        description: 'كيفية الحفاظ على التقدم والابتكار',
+        pricing: 'free',
+        setup_time: '2-3 hours',
+        difficulty: 'advanced'
+      }
+    ],
+    conditions: [
+      { questionId: 'competitive_position', operator: 'equals', value: 'clear_differentiation' }
+    ]
+  },
+  {
+    id: 'market_leadership_strategies',
+    title: 'استراتيجيات الريادة السوقية',
+    description: 'كيفية الحفاظ على موقعك كرائد في السوق والتوسع',
+    category: 'marketing',
+    priority: 'low',
+    resources: [
+      {
+        name: 'دليل الريادة السوقية',
+        type: 'guide',
+        description: 'استراتيجيات للحفاظ على الريادة والتوسع في أسواق جديدة',
+        pricing: 'free',
+        setup_time: '3-4 hours',
+        difficulty: 'advanced'
+      }
+    ],
+    conditions: [
+      { questionId: 'competitive_position', operator: 'equals', value: 'market_leadership' }
     ]
   }
 ];
