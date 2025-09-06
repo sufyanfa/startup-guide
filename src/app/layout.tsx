@@ -9,11 +9,14 @@ import { Analytics } from '@vercel/analytics/next';
 const rubik = Rubik({
   variable: "--font-rubik",
   subsets: ["latin", "arabic"],
+  display: 'swap',
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -60,8 +63,10 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
-        <script defer src="https://cloud.umami.is/script.js" data-website-id="3395d308-5729-4f57-bde5-bf4e5f24d58f"></script>
-        <script async src="https://tally.so/widgets/embed.js"></script>
+        <link rel="preconnect" href="https://cloud.umami.is" />
+        <link rel="preconnect" href="https://tally.so" />
+        <link rel="dns-prefetch" href="https://cloud.umami.is" />
+        <link rel="dns-prefetch" href="https://tally.so" />
       </head>
       <body
         className={`${rubik.variable} ${geistMono.variable} antialiased font-sans`}
@@ -72,6 +77,8 @@ export default function RootLayout({
           {children}
           <Analytics />
         </ThemeProvider>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="3395d308-5729-4f57-bde5-bf4e5f24d58f"></script>
+        <script async src="https://tally.so/widgets/embed.js"></script>
       </body>
     </html>
   );

@@ -50,60 +50,83 @@ export const formatContent = (content: string) => {
   };
 
   const lines = content.split('\n');
-  return lines.map((line, index) => {
+  const processedElements: React.ReactNode[] = [];
+  let currentList: React.ReactNode[] = [];
+  let listKey = 0;
+  
+  const flushList = () => {
+    if (currentList.length > 0) {
+      processedElements.push(
+        <ul key={`list-${listKey++}`} className="list-disc mr-6 mb-4 space-y-2">
+          {currentList}
+        </ul>
+      );
+      currentList = [];
+    }
+  };
+
+  lines.forEach((line, index) => {
     // Handle headers
     if (line.startsWith('###')) {
-      return (
+      flushList();
+      processedElements.push(
         <h3 key={index} className="text-lg font-semibold mt-6 mb-3 text-gray-800 dark:text-gray-200">
           {line.replace('###', '').trim()}
         </h3>
       );
     }
-    if (line.startsWith('##')) {
-      return (
+    else if (line.startsWith('##')) {
+      flushList();
+      processedElements.push(
         <h2 key={index} className="text-xl font-semibold mt-8 mb-4 text-gray-800 dark:text-gray-200">
           {line.replace('##', '').trim()}
         </h2>
       );
     }
-    if (line.startsWith('#')) {
-      return (
+    else if (line.startsWith('#')) {
+      flushList();
+      processedElements.push(
         <h1 key={index} className="text-2xl font-bold mt-8 mb-6 text-gray-900 dark:text-gray-100">
           {line.replace('#', '').trim()}
         </h1>
       );
     }
-
     // Handle bold text
-    if (line.startsWith('**') && line.endsWith('**')) {
-      return (
+    else if (line.startsWith('**') && line.endsWith('**')) {
+      flushList();
+      processedElements.push(
         <p key={index} className="font-semibold my-4 text-gray-800 dark:text-gray-200">
           {line.replace(/\*\*/g, '')}
         </p>
       );
     }
-
     // Handle lists  
-    if (line.startsWith('- ')) {
+    else if (line.startsWith('- ')) {
       const listContent = line.replace(/^-\s*/, '');
-      return (
-        <li key={index} className="mr-6 mb-2 text-gray-700 list-disc dark:text-gray-300">
+      currentList.push(
+        <li key={index} className="text-gray-700 dark:text-gray-300">
           {processInlineFormatting(listContent)}
         </li>
       );
     }
-
     // Handle empty lines
-    if (line.trim() === '') {
-      return <br key={index} />;
+    else if (line.trim() === '') {
+      flushList();
+      processedElements.push(<br key={index} />);
     }
-
-
     // Regular paragraphs
-    return (
-      <p key={index} className="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">
-        {processInlineFormatting(line)}
-      </p>
-    );
+    else {
+      flushList();
+      processedElements.push(
+        <p key={index} className="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">
+          {processInlineFormatting(line)}
+        </p>
+      );
+    }
   });
+
+  // Flush any remaining list items
+  flushList();
+  
+  return processedElements;
 };

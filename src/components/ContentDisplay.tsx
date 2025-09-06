@@ -7,6 +7,7 @@ import { APP_CONSTANTS } from '../constants/index';
 import QuizComponent from './QuizComponent';
 import AssessmentComponent from './AssessmentComponent';
 import { Story } from './Story';
+import Image from 'next/image';
 
 interface ContentDisplayProps {
   section: Section;
@@ -64,10 +65,16 @@ export const ContentDisplay: React.FC<ContentDisplayProps> = ({
             <>
               {section.image && (
                 <div className="mb-6">
-                  <img 
+                  <Image
+                    width={800}
+                    height={400}
                     src={section.image} 
                     alt={section.title}
                     className="w-full h-auto rounded-lg shadow-md"
+                    priority={true}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                   />
                 </div>
               )}
