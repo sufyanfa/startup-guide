@@ -152,15 +152,33 @@ export async function POST(request: NextRequest) {
     const signature = headersList.get('tally-signature')
     const webhookSecret = process.env.TALLY_WEBHOOK_SECRET
     
+    // Debug: Log webhook details
+    console.log('Webhook Debug:', {
+      hasSecret: !!webhookSecret,
+      hasSignature: !!signature,
+      contentLength: body.length,
+      headers: Object.fromEntries(
+        Array.from(headersList.entries()).filter(([key]) => 
+          key.toLowerCase().includes('tally') || key.toLowerCase().includes('signature')
+        )
+      )
+    })
+
     if (webhookSecret) {
       if (!signature) {
         console.error('Missing signature in webhook request')
-        return NextResponse.json({ error: 'Missing signature' }, { status: 401 })
+        return NextResponse.json({ 
+          error: 'Missing signature',
+          debug: { hasSecret: true, hasSignature: false }
+        }, { status: 401 })
       }
       
       if (!verifySignature(body, signature, webhookSecret)) {
         console.error('Invalid webhook signature')
-        return NextResponse.json({ error: 'Invalid signature' }, { status: 401 })
+        return NextResponse.json({ 
+          error: 'Invalid signature',
+          debug: { hasSecret: true, hasSignature: true, signatureValid: false }
+        }, { status: 401 })
       }
     }
 
