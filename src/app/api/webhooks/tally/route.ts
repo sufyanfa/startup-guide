@@ -10,7 +10,7 @@ interface TallyField {
   key: string
   label: string
   type: string
-  value: any
+  value: string | number | boolean | string[]
 }
 
 interface TallySubmission {
@@ -74,14 +74,26 @@ function verifySignature(payload: string, signature: string, secret: string): bo
   }
 }
 
-function validateSubmission(submission: any): submission is TallySubmission {
+function validateSubmission(submission: unknown): submission is TallySubmission {
+  if (!submission || typeof submission !== 'object') {
+    return false
+  }
+  
+  const sub = submission as Record<string, unknown>
+  
+  if (typeof sub.eventId !== 'string' || 
+      typeof sub.eventType !== 'string' || 
+      !sub.data || 
+      typeof sub.data !== 'object' || 
+      sub.data === null) {
+    return false
+  }
+  
+  const data = sub.data as Record<string, unknown>
+  
   return (
-    submission &&
-    typeof submission.eventId === 'string' &&
-    typeof submission.eventType === 'string' &&
-    submission.data &&
-    typeof submission.data.submissionId === 'string' &&
-    Array.isArray(submission.data.fields)
+    typeof data.submissionId === 'string' &&
+    Array.isArray(data.fields)
   )
 }
 
@@ -181,6 +193,11 @@ export async function POST(request: NextRequest) {
     const rawEmail = emailField.value
     
     // Validate email format
+    if (typeof rawEmail !== 'string') {
+      console.error('Email field value is not a string:', rawEmail)
+      return NextResponse.json({ error: 'Invalid email format' }, { status: 400 })
+    }
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(rawEmail)) {
       console.error('Invalid email format:', rawEmail)
@@ -195,7 +212,7 @@ export async function POST(request: NextRequest) {
       ['name', 'اسم', 'الاسم', 'full_name', 'fullname']
     )
     
-    const recipientName = nameField?.value || 'عزيزي المشارك'
+    const recipientName = (typeof nameField?.value === 'string' ? nameField.value : null) || 'عزيزي المشارك'
 
     // Validate required environment variables
     if (!process.env.RESEND_API_KEY) {

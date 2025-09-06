@@ -1,4 +1,4 @@
-import { Recommendation, Resource } from '../types/inedx';
+import { Recommendation } from '../types/inedx';
 
 
 export const recommendations: Recommendation[] = [
