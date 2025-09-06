@@ -174,7 +174,7 @@ export async function POST(request: NextRequest) {
         }, { status: 401 })
       }
       
-      if (!verifySignature(body, signature, webhookSecret)) {
+      if (!verifySignature(body, signature!, webhookSecret!)) {
         console.error('Invalid webhook signature')
         return NextResponse.json({ 
           error: 'Invalid signature',
