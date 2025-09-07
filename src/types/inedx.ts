@@ -98,13 +98,3 @@ export interface Progress {
   completedSections: Set<string>;
   quizScores: Record<string, number>;
 }
-
-export type QuizScore = {
-  sectionId: string;
-  score: number;
-  completedAt: Date;
-};
-
-export type AnswerStatus = 'default' | 'correct' | 'incorrect';
-
-export type ScoreLevel = 'excellent' | 'good' | 'needs_review';
