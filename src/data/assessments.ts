@@ -66,7 +66,7 @@ export const assessments: Record<string, Assessment> = {
         required: true,
         options: [
           { value: 'solo', label: '🏃 المنفرد', description: 'أعمل بمفردي وأركز على إثبات الفكرة' },
-          { value: 'partnership', label: '👥 الشراكة', description: 'أعمل مع شريك مؤسس موثوق ومتفرغ' },
+          { value: 'partnership', label: '👥 الشراكة', description: 'أعمل مع شريك مؤسس موثوق' },
           { value: 'seeking_partner', label: '🔍 البحث', description: 'أعمل بمفردي وأبحث عن الشريك المناسب' },
           { value: 'full_team', label: '⚡ الفريق', description: 'لدينا فريق متكامل يعمل بفعالية عالية' }
         ]

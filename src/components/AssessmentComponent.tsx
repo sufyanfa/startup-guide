@@ -312,7 +312,7 @@ const AssessmentComponent: React.FC<AssessmentComponentProps> = ({
           </div>
         )}
 
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center">
           <Button onClick={() => {
             clearAnswers();
             setCurrentQuestionIndex(0);
@@ -320,9 +320,6 @@ const AssessmentComponent: React.FC<AssessmentComponentProps> = ({
           }} variant="outline" className="flex items-center gap-2">
             <RotateCcw className="h-4 w-4" />
             {ASSESSMENT_CONSTANTS.RETAKE_ASSESSMENT}
-          </Button>
-          <Button onClick={() => onComplete(recommendations)}>
-            {ASSESSMENT_CONSTANTS.COMPLETE_CHAPTER}
           </Button>
         </div>
       </div>

@@ -76,9 +76,9 @@ const EbookReader: React.FC = () => {
   };
 
   const handleAssessmentComplete = () => {
-    // For now, just complete the section. In the future, we might want to store recommendations
+    // Complete the section when assessment generates recommendations
     completeSection(currentSection.id);
-    setShowAssessment(false);
+    // Keep assessment visible to show recommendations, but allow navigation
   };
 
   return (

@@ -2,7 +2,6 @@ import { Recommendation } from '../types/inedx';
 
 
 export const recommendations: Recommendation[] = [
-  // 1️⃣ "مجرد فكرة" - just_idea
   {
     id: 'idea_validation_help',
     title: 'تحقق من صحة فكرتك قبل البناء',
@@ -42,8 +41,6 @@ export const recommendations: Recommendation[] = [
       { questionId: 'startup_stage', operator: 'equals', value: 'seed' }
     ]
   },
-
-  // 2️⃣ "أبحث في السوق" - researching
   {
     id: 'market_research_help',
     title: 'أدوات وموارد لأبحاث السوق',
@@ -74,8 +71,6 @@ export const recommendations: Recommendation[] = [
       { questionId: 'startup_stage', operator: 'equals', value: 'exploration' }
     ]
   },
-
-  // 3️⃣ "أبني المنتج الأولي" - building_mvp
   {
     id: 'building_mvp_help',
     title: 'أدوات وإرشادات بناء المنتج الأولي',
@@ -105,8 +100,6 @@ export const recommendations: Recommendation[] = [
       { questionId: 'startup_stage', operator: 'equals', value: 'development' }
     ]
   },
-
-  // 4️⃣ "لديّ عملاء أوائل" - have_customers
   {
     id: 'early_customers_help',
     title: 'أدوات تتبع رضا العملاء ونمو الشركة',

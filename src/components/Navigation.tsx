@@ -61,19 +61,17 @@ export const Navigation: React.FC<NavigationProps> = ({
         </Button>
 
         <div className="flex items-center gap-2">
-          {!showQuiz && (
-            <Button
-              onClick={handleMarkAsRead}
-              className="flex items-center gap-2"
-            >
-              {isLastPage ? APP_CONSTANTS.EVALUATE : APP_CONSTANTS.NEXT_CHAPTER}
-              {isLastPage ? (
-                <CheckCircle className="h-4 w-4" />
-              ) : (
-                <ChevronLeft className="h-4 w-4" />
-              )}
-            </Button>
-          )}
+          <Button
+            onClick={handleMarkAsRead}
+            className="flex items-center gap-2"
+          >
+            {isLastPage ? APP_CONSTANTS.EVALUATE : APP_CONSTANTS.NEXT_CHAPTER}
+            {isLastPage ? (
+              <CheckCircle className="h-4 w-4" />
+            ) : (
+              <ChevronLeft className="h-4 w-4" />
+            )}
+          </Button>
         </div>
       </div>
       
