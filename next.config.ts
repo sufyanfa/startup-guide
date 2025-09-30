@@ -4,7 +4,10 @@ const nextConfig: NextConfig = {
   // Enable optimizations
   compress: true,
   poweredByHeader: false,
-  
+
+  // Output configuration for Cloudflare Pages
+  output: 'standalone',
+
   // Modern JavaScript output
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
