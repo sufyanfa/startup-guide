@@ -5,12 +5,17 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
 
-  // Output configuration for Cloudflare Pages
-  output: 'standalone',
-
   // Modern JavaScript output
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+  // Disable webpack cache in production to avoid large cache files
+  webpack: (config, { isServer }) => {
+    if (process.env.NODE_ENV === 'production') {
+      config.cache = false;
+    }
+    return config;
   },
   
   // Image optimization
