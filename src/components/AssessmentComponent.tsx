@@ -9,7 +9,7 @@ import { Checkbox } from './ui/checkbox';
 import { Input } from './ui/input';
 import { Slider } from './ui/slider';
 import { CheckCircle, ArrowLeft, ArrowRight, FileText, ExternalLink, Clock, DollarSign, BarChart3, Users, RotateCcw, Check } from 'lucide-react';
-import { Assessment, AssessmentAnswer, Recommendation } from '@/types/inedx';
+import { Assessment, AssessmentAnswer } from '@/types/inedx';
 import { useAssessmentAnswers } from '../hooks/useAssessmentAnswers';
 import { ASSESSMENT_CONSTANTS } from '../constants/assessment';
 

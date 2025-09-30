@@ -57,8 +57,10 @@ export const ContentDisplay: React.FC<ContentDisplayProps> = ({
               <AssessmentComponent
                 assessment={section.assessment}
                 sectionId={section.id}
-                onComplete={onAssessmentComplete}
-                onBack={() => onAssessmentToggle(false)}
+                onBack={() => {
+                  onAssessmentToggle(false);
+                  onAssessmentComplete();
+                }}
               />
             </section>
           ) : (

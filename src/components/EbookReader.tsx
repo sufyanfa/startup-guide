@@ -132,7 +132,6 @@ const EbookReader: React.FC = () => {
           currentIndex={currentSectionIndex}
           totalSections={sections.length}
           isCompleted={isCurrentSectionCompleted}
-          showQuiz={showQuiz || showAssessment}
           onPrevious={prevSection}
           onNext={nextSection}
           onComplete={handleCompleteSection}
