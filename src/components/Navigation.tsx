@@ -9,7 +9,6 @@ interface NavigationProps {
   currentIndex: number;
   totalSections: number;
   isCompleted: boolean;
-  showQuiz: boolean;
   onPrevious: () => void;
   onNext: () => void;
   onComplete: () => void;
@@ -18,7 +17,6 @@ interface NavigationProps {
 export const Navigation: React.FC<NavigationProps> = ({
   currentIndex,
   totalSections,
-  showQuiz,
   onPrevious,
   onNext,
   onComplete

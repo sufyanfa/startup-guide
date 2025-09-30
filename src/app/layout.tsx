@@ -4,7 +4,6 @@ import "./globals.css";
 import { StartupGuideSchema } from "@/components/StructuredData";
 import { PerformanceMonitor } from "@/components/PerformanceMonitor";
 import { ThemeProvider } from "next-themes";
-import { Analytics } from '@vercel/analytics/next';
 
 const rubik = Rubik({
   variable: "--font-rubik",
@@ -75,7 +74,6 @@ export default function RootLayout({
           <StartupGuideSchema />
           <PerformanceMonitor />
           {children}
-          <Analytics />
         </ThemeProvider>
         <script defer src="https://cloud.umami.is/script.js" data-website-id="3395d308-5729-4f57-bde5-bf4e5f24d58f"></script>
         <script async src="https://tally.so/widgets/embed.js"></script>

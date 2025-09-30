@@ -16,15 +16,13 @@ import { ASSESSMENT_CONSTANTS } from '../constants/assessment';
 interface AssessmentComponentProps {
   assessment: Assessment;
   sectionId: string;
-  onComplete: (recommendations: Recommendation[]) => void;
   onBack: () => void;
 }
 
-const AssessmentComponent: React.FC<AssessmentComponentProps> = ({ 
-  assessment, 
+const AssessmentComponent: React.FC<AssessmentComponentProps> = ({
+  assessment,
   sectionId,
-  onComplete, 
-  onBack 
+  onBack
 }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [showResults, setShowResults] = useState(false);

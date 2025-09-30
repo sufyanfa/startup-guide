@@ -164,26 +164,22 @@ export async function POST(request: NextRequest) {
       )
     })
 
-    // TEMPORARY: Skip signature verification for debugging
-    if (false && webhookSecret) {
+    // Verify webhook signature
+    if (webhookSecret) {
       if (!signature) {
         console.error('Missing signature in webhook request')
-        return NextResponse.json({ 
-          error: 'Missing signature',
-          debug: { hasSecret: true, hasSignature: false }
+        return NextResponse.json({
+          error: 'Missing signature'
         }, { status: 401 })
       }
-      
-      if (!verifySignature(body, signature!, webhookSecret!)) {
+
+      if (!verifySignature(body, signature, webhookSecret)) {
         console.error('Invalid webhook signature')
-        return NextResponse.json({ 
-          error: 'Invalid signature',
-          debug: { hasSecret: true, hasSignature: true, signatureValid: false }
+        return NextResponse.json({
+          error: 'Invalid signature'
         }, { status: 401 })
       }
     }
-    
-    console.log('🚨 SIGNATURE VERIFICATION DISABLED FOR DEBUGGING')
 
     // Parse and validate JSON
     let submission: TallySubmission
