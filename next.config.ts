@@ -10,14 +10,6 @@ const nextConfig: NextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Disable webpack cache in production to avoid large cache files
-  webpack: (config, { isServer }) => {
-    if (process.env.NODE_ENV === 'production') {
-      config.cache = false;
-    }
-    return config;
-  },
-  
   // Image optimization
   images: {
     formats: ['image/webp', 'image/avif'],
