@@ -3,8 +3,14 @@ import { Resend } from 'resend'
 import { headers } from 'next/headers'
 import crypto from 'crypto'
 
-// Initialize Resend with error handling
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy initialize Resend to avoid build-time errors
+let resend: Resend | null = null
+function getResend() {
+  if (!resend) {
+    resend = new Resend(process.env.RESEND_API_KEY)
+  }
+  return resend
+}
 
 interface TallyField {
   key: string
@@ -238,7 +244,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Send confirmation email with retry logic
-    const emailResult = await resend.emails.send({
+    const emailResult = await getResend().emails.send({
       from: process.env.FROM_EMAIL || 'info@sufyanfa.com',
       to: recipientEmail,
       subject: 'شكراً لتفاعلك مع دليل الشركات الناشئة',
