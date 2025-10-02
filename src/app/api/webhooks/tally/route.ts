@@ -263,6 +263,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Send confirmation email with retry logic
+    console.log('Attempting to send email to:', recipientEmail)
+    console.log('Using FROM_EMAIL:', process.env.FROM_EMAIL || 'info@sufyanfa.com')
+
     const emailResult = await getResend().emails.send({
       from: process.env.FROM_EMAIL || 'info@sufyanfa.com',
       to: recipientEmail,
@@ -321,6 +324,15 @@ export async function POST(request: NextRequest) {
         { name: 'submission', value: submission.data.submissionId.slice(-8) }
       ]
     })
+
+    // Check for email send errors
+    if (emailResult.error) {
+      console.error('❌ Resend error:', emailResult.error)
+      return NextResponse.json({
+        error: 'Failed to send email',
+        details: emailResult.error
+      }, { status: 500 })
+    }
 
     // Log successful email send
     const processingTime = Date.now() - startTime
