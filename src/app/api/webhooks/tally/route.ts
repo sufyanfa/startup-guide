@@ -76,17 +76,21 @@ async function verifySignature(payload: string, signature: string, secret: strin
       encoder.encode(payload)
     )
 
-    const expectedSignature = Array.from(new Uint8Array(signatureBuffer))
-      .map(b => b.toString(16).padStart(2, '0'))
-      .join('')
-
+    // Tally uses base64 encoding
+    const expectedSignature = btoa(String.fromCharCode(...new Uint8Array(signatureBuffer)))
     const providedSignature = signature.replace('sha256=', '')
 
+    console.log('Signature comparison:', {
+      expected: expectedSignature,
+      provided: providedSignature,
+      match: expectedSignature === providedSignature
+    })
+
+    // Constant-time comparison
     if (expectedSignature.length !== providedSignature.length) {
       return false
     }
 
-    // Constant-time comparison
     let result = 0
     for (let i = 0; i < expectedSignature.length; i++) {
       result |= expectedSignature.charCodeAt(i) ^ providedSignature.charCodeAt(i)
