@@ -24,6 +24,11 @@ const nextConfig: NextConfig = {
     webVitalsAttribution: ['CLS', 'LCP'],
   },
 
+  // Turbopack configuration
+  turbopack: {
+    root: process.cwd(),
+  },
+
   // Headers for better SEO and performance
   async headers() {
     return [
