@@ -19,6 +19,7 @@
 /.worker-next/
 /.wrangler/
 /.open-next/
+/.vercel/
 
 # production
 /build

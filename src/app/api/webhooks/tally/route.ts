@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { headers } from 'next/headers'
-import crypto from 'crypto'
+
+// Configure Edge Runtime for Cloudflare Pages
+export const runtime = 'edge'
 
 // Lazy initialize Resend to avoid build-time errors
 let resend: Resend | null = null
@@ -57,23 +59,39 @@ function checkRateLimit(ip: string): boolean {
   return true
 }
 
-function verifySignature(payload: string, signature: string, secret: string): boolean {
+async function verifySignature(payload: string, signature: string, secret: string): Promise<boolean> {
   try {
-    const expectedSignature = crypto
-      .createHmac('sha256', secret)
-      .update(payload, 'utf8')
-      .digest('hex')
-    
+    const encoder = new TextEncoder()
+    const key = await crypto.subtle.importKey(
+      'raw',
+      encoder.encode(secret),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['sign']
+    )
+
+    const signatureBuffer = await crypto.subtle.sign(
+      'HMAC',
+      key,
+      encoder.encode(payload)
+    )
+
+    const expectedSignature = Array.from(new Uint8Array(signatureBuffer))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('')
+
     const providedSignature = signature.replace('sha256=', '')
-    
+
     if (expectedSignature.length !== providedSignature.length) {
       return false
     }
-    
-    return crypto.timingSafeEqual(
-      Buffer.from(expectedSignature, 'hex'),
-      Buffer.from(providedSignature, 'hex')
-    )
+
+    // Constant-time comparison
+    let result = 0
+    for (let i = 0; i < expectedSignature.length; i++) {
+      result |= expectedSignature.charCodeAt(i) ^ providedSignature.charCodeAt(i)
+    }
+    return result === 0
   } catch (error) {
     console.error('Signature verification error:', error)
     return false
@@ -179,7 +197,8 @@ export async function POST(request: NextRequest) {
         }, { status: 401 })
       }
 
-      if (!verifySignature(body, signature, webhookSecret)) {
+      const isValid = await verifySignature(body, signature, webhookSecret)
+      if (!isValid) {
         console.error('Invalid webhook signature')
         return NextResponse.json({
           error: 'Invalid signature'
