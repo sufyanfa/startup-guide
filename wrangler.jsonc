@@ -3,5 +3,5 @@
   "name": "startup-guide",
   "compatibility_date": "2024-12-30",
   "compatibility_flags": ["nodejs_compat"],
-  "pages_build_output_dir": ".open-next/cloudflare"
+  "pages_build_output_dir": ".vercel/output/static"
 }
