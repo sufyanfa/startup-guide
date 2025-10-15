@@ -18,7 +18,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
   progress,
   onSectionSelect
 }) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <Card className="mb-6">

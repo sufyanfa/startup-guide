@@ -103,7 +103,7 @@ export const recommendations: Recommendation[] = [
   {
     id: 'early_customers_help',
     title: 'أدوات تتبع رضا العملاء ونمو الشركة',
-    description: 'قس مدى رضا عملائك وطبق استراتيجيات النمو المبكر',
+    description: 'قس مدى رضا عملاءك وطبق استراتيجيات النمو المبكر',
     category: 'marketing',
     priority: 'high',
     resources: [
@@ -111,7 +111,7 @@ export const recommendations: Recommendation[] = [
         name: 'أداة تتبع رضا العملاء',
         type: 'tool',
         url: 'https://tally.so/',
-        description: 'قس مدى رضا عملائك ومدى احتمال ترشيحهم لك - أدوات مثل Tally.so, Typeform, Google Forms',
+        description: 'قس مدى رضا عملاءك ومدى احتمال ترشيحهم لك - أدوات مثل Tally.so, Typeform, Google Forms',
         pricing: 'freemium',
         setup_time: '2 hours',
         difficulty: 'beginner'
@@ -139,18 +139,19 @@ export const recommendations: Recommendation[] = [
     priority: 'high',
     resources: [
       {
-        name: 'دليل دورة التعلم السريع',
+        name: 'نموذج بناء المنتج الأولي MVP',
         type: 'guide',
-        description: 'كيفية تطبيق دورة بناء-قياس-تعلم بفعالية',
+        url: 'https://www.monshaat.gov.sa/sites/default/files/11.pdf',
+        description: 'نموذج لتطوير منتج أولي يركز على حل المشكلة الأساسية',
         pricing: 'free',
         setup_time: '2-3 hours',
         difficulty: 'intermediate'
       },
       {
-        name: 'Google Analytics',
-        type: 'tool',
-        url: 'https://analytics.google.com',
-        description: 'تحليل زوار الموقع والتسويق الرقمي',
+        name: 'دليل إدارة المنتجات',
+        type: 'guide',
+        url: 'https://prodcamp.t2.sa/wp-content/uploads/2023/05/%D8%AF%D9%84%D9%8A%D9%84%D9%83-%D9%84%D9%84%D8%AA%D8%B9%D8%B1%D9%81-%D8%B9%D9%84%D9%89-%D8%A7%D9%94%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7%D8%AA-%D9%85%D9%81%D8%A7%D9%87%D9%8A%D9%85-%D9%88%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A7%D8%AA-%D8%AD%D8%AF%D9%8A%D8%AB%D8%A9-%D9%84%D8%A7%D9%95%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA-.pdf',
+        description: 'دليل التعرف على أساسيــات, مفاهيــم واستراتيجيات  إدارة المنتجات',
         pricing: 'free',
         setup_time: '2-4 hours',
         difficulty: 'intermediate'
@@ -170,16 +171,17 @@ export const recommendations: Recommendation[] = [
       {
         name: 'دليل مقابلات المستخدمين',
         type: 'guide',
+        url: 'https://uxwritingar.com/free-resources',
         description: 'كيفية إجراء مقابلات فعالة مع المستخدمين',
         pricing: 'free',
         setup_time: '2-3 hours',
         difficulty: 'beginner'
       },
       {
-        name: 'Mixpanel',
+        name: 'دليل إدارة المشاريع للمؤسسين',
         type: 'tool',
-        url: 'https://mixpanel.com',
-        description: 'تحليل سلوك المستخدمين في التطبيقات والمواقع',
+        url: 'https://www.notion.com/blog/project-management-playbook-for-founders',
+        description: 'دليل لإدارة االمشاريع مع أشهر القوالب على Notion',
         pricing: 'freemium',
         setup_time: '1-2 hours',
         difficulty: 'intermediate'
@@ -201,7 +203,17 @@ export const recommendations: Recommendation[] = [
       {
         name: 'دليل اختيار الشريك المؤسس',
         type: 'guide',
+        url: 'https://blog.mostaql.com/how-to-choose-the-right-co-founder/',
         description: 'كيفية العثور على شريك مؤسس متوافق ومتفرغ',
+        pricing: 'free',
+        setup_time: '1-2 hours',
+        difficulty: 'beginner'
+      },
+      {
+        name: 'imateco',
+        type: 'tool',
+        url: 'https://imateco.com/',
+        description: 'منصة للعثور على شركاء مؤسسين ومطورين',
         pricing: 'free',
         setup_time: '1-2 hours',
         difficulty: 'beginner'
@@ -219,9 +231,19 @@ export const recommendations: Recommendation[] = [
     priority: 'medium',
     resources: [
       {
-        name: 'دليل الرائد الفردي',
+        name: 'تجارب الشركات',
         type: 'guide',
-        description: 'كيفية إدارة جميع جوانب الشركة بفعالية',
+        url: 'https://youtube.com/playlist?list=PLeNNUmE-BlnE5GVCM_aZtWCLzCzHYA-ho&si=_ziFWzncOAjFoLFh',
+        description: 'سوالف بزنس - يسرد تجارب شركات ناشئة متنوعة',
+        pricing: 'free',
+        setup_time: '1-2 hours',
+        difficulty: 'intermediate'
+      },
+      {
+        name: 'الكيانات القانونية للشركات الناشئة',
+        type: 'guide',
+        url: 'https://www.daftra.com/hub/%D8%A7%D9%84%D9%81%D8%B1%D9%82-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D8%A4%D8%B3%D8%B3%D8%A9-%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A9',
+        description: 'تعلم عن الكيانات القانونية المختلفة للشركات الناشئة في السعودية',
         pricing: 'free',
         setup_time: '1-2 hours',
         difficulty: 'intermediate'
@@ -336,18 +358,19 @@ export const recommendations: Recommendation[] = [
     priority: 'high',
     resources: [
       {
-        name: 'دليل إطلاق المنتج',
+        name: 'نشرة بريق',
         type: 'guide',
-        description: 'خطوات إطلاق المنتج والتسويق الأولي',
+        url: 'https://gohodhod.com/@bareeq',
+        description: 'نشرة تحتوي على أدوات ونصائح لإطلاق وتحسين المنتجات',
         pricing: 'free',
         setup_time: '2-3 hours',
         difficulty: 'intermediate'
       },
       {
-        name: 'أدوات جمع الملاحظات',
+        name: 'Tally',
         type: 'tool',
         url: 'https://tally.so/',
-        description: 'أدوات لجمع ملاحظات المستخدمين وتحليلها',
+        description: 'أداة لجمع ملاحظات المستخدمين وتحليلها',
         pricing: 'freemium',
         setup_time: '1-2 hours',
         difficulty: 'beginner'
@@ -365,9 +388,19 @@ export const recommendations: Recommendation[] = [
     priority: 'high',
     resources: [
       {
-        name: 'استراتيجيات التوسع التقني',
+        name: 'إدارة المنتجات',
         type: 'guide',
-        description: 'كيفية بناء منتج قابل للتوسع',
+        url: 'https://abdelsalam.me/category/product-management/',
+        description: 'مدونة تركز على إستراتيجيات التطوير والنمو والتوسّع',
+        pricing: 'free',
+        setup_time: '2-3 hours',
+        difficulty: 'intermediate'
+      },
+      {
+        name: 'بودكاست يونيكورن',
+        type: 'guide',
+        url: 'https://www.youtube.com/@Riyadi_Mukhtalif/videos',
+        description: 'متخصص في الحديث عن الشركات التقنية من جانب التقنية و النمو',
         pricing: 'free',
         setup_time: '3-4 hours',
         difficulty: 'advanced'
@@ -387,11 +420,21 @@ export const recommendations: Recommendation[] = [
     priority: 'medium',
     resources: [
       {
-        name: 'دليل إدارة الشراكة',
+        name: 'شراكات عمل ناجحة',
         type: 'guide',
-        description: 'كيفية إدارة الشراكة وتوزيع المسؤوليات',
+        url: 'https://www.wafeq.com/ar/%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84/%D9%84%D8%A3%D8%B5%D8%AD%D8%A7%D8%A8-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84/%D9%83%D9%8A%D9%81-%D8%AA%D8%A8%D9%86%D9%8A-%D8%B4%D8%B1%D8%A7%D9%83%D8%A7%D8%AA-%D8%B9%D9%85%D9%84-%D9%86%D8%A7%D8%AC%D8%AD%D8%A9-%D9%81%D9%8A-7-%D8%AE%D8%B7%D9%88%D8%A7%D8%AA',
+        description: 'كيف تبني شراكات عمل ناجحة',
         pricing: 'free',
-        setup_time: '1-2 hours',
+        setup_time: '4 minutes',
+        difficulty: 'beginner'
+      },
+       {
+        name: 'شراكات عمل ناجحة',
+        type: 'guide',
+        url: 'https://www.wafeq.com/ar/%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84/%D9%84%D8%A3%D8%B5%D8%AD%D8%A7%D8%A8-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84/%D9%83%D9%8A%D9%81-%D8%AA%D8%A8%D9%86%D9%8A-%D8%B4%D8%B1%D8%A7%D9%83%D8%A7%D8%AA-%D8%B9%D9%85%D9%84-%D9%86%D8%A7%D8%AC%D8%AD%D8%A9-%D9%81%D9%8A-7-%D8%AE%D8%B7%D9%88%D8%A7%D8%AA',
+        description: 'كيف تبني شراكات عمل ناجحة',
+        pricing: 'free',
+        setup_time: '4 minutes',
         difficulty: 'beginner'
       }
     ],
@@ -409,18 +452,19 @@ export const recommendations: Recommendation[] = [
       {
         name: 'أدوات إدارة المشاريع',
         type: 'tool',
-        url: 'https://notion.so',
-        description: 'أدوات مثل Notion, Asana, أو Trello لإدارة المهام والمشاريع',
+        url: 'https://linear.app/',
+        description: 'أدوات مثل Notion,Linear, Asana, أو Trello لإدارة المهام والمشاريع',
         pricing: 'freemium',
         setup_time: '2-3 hours',
         difficulty: 'beginner'
       },
       {
-        name: 'تقنيات القيادة الفعالة',
+        name: 'القيادة والإدارة',
         type: 'guide',
-        description: 'مبادئ القيادة الناجحة للشركات الناشئة',
+        url: 'https://www.qoyod.com/ara/%D8%A7%D9%84%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D9%88%D8%A7%D9%84%D9%82%D9%8A%D8%A7%D8%AF%D8%A9/',
+        description: 'كيف تصبح قائداً ملهمًا',
         pricing: 'free',
-        setup_time: '2-3 hours',
+        setup_time: '6 minutes',
         difficulty: 'intermediate'
       }
     ],
